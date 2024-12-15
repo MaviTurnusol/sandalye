@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://0064ewbqbx2o"]
+
+[ext_resource type="Texture2D" uid="uid://b4ium18fxjwpq" path="res://Stages/test3.png" id="1_ogw6t"]
+
+[node name="WorldSceneTest1" type="Node2D"]
+
+[node name="koridor" type="Sprite2D" parent="."]
+texture = ExtResource("1_ogw6t")
+centered = false
