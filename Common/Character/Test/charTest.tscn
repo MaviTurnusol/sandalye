@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://8ckwldlri7xj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5uh6y"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="CharTest" type="CharacterBody2D"]
+
+[node name="sprites" type="Marker2D" parent="."]
+
+[node name="torso" type="AnimatedSprite2D" parent="sprites"]
+sprite_frames = SubResource("SpriteFrames_5uh6y")
+animation = &"idle"
