@@ -1,5 +1,6 @@
-[gd_scene load_steps=117 format=3 uid="uid://cwd6s0wcqu4xh"]
+[gd_scene load_steps=120 format=3 uid="uid://cwd6s0wcqu4xh"]
 
+[ext_resource type="Script" path="res://Common/Character/Player/player.gd" id="1_cwkiy"]
 [ext_resource type="Texture2D" uid="uid://cwgg0fk537ggn" path="res://Common/Character/Player/solKolIdle.png" id="1_xryr0"]
 [ext_resource type="Texture2D" uid="uid://bws462dycnvpc" path="res://Common/Character/Player/torsoIdle.png" id="2_4o580"]
 [ext_resource type="Texture2D" uid="uid://du7td2rv2kocm" path="res://Common/Character/Player/pantulIdle.png" id="3_oxkef"]
@@ -12,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://du1ptsvmy2ep2" path="res://Common/Character/Player/kafaWalk.png" id="9_1i26v"]
 [ext_resource type="Texture2D" uid="uid://b51omfocval5k" path="res://Common/Character/Player/sagKolWalk.png" id="11_elb82"]
 [ext_resource type="PackedScene" uid="uid://dojrctry1cwm6" path="res://Common/state_machine.tscn" id="12_wbqvs"]
+[ext_resource type="PackedScene" uid="uid://cow63rp24v5o7" path="res://Common/Character/Player/States/Idle.tscn" id="14_yg8qf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nhvbf"]
 atlas = ExtResource("1_xryr0")
@@ -777,7 +779,11 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hq7m"]
+size = Vector2(9, 39)
+
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_cwkiy")
 
 [node name="sprites" type="Marker2D" parent="."]
 
@@ -818,3 +824,9 @@ autoplay = "walk"
 frame_progress = 0.575759
 
 [node name="StateMachine" parent="." instance=ExtResource("12_wbqvs")]
+
+[node name="Idle" parent="StateMachine" instance=ExtResource("14_yg8qf")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 14.5)
+shape = SubResource("RectangleShape2D_4hq7m")
