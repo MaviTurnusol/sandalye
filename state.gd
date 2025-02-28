@@ -2,18 +2,22 @@ extends Node
 class_name State
 
 var passive = false
-var father : Node = null : set = setFather
+var grandfather = null
+var conditions = []
+var blacklist = []
+var calls = []
 var machine
-
-func setFather(value):
-	father = value
-	Enter()
+var endAnim
+signal transitioned
 	
 func _ready():
-	get_parent().currentState = self
+	grandfather = get_parent().get_parent()
 	pass
 
-func Update(delta):
+func Physics_Update(_delta: float):
+	pass
+
+func Update(_delta: float):
 	pass
 
 func Enter():
@@ -21,3 +25,23 @@ func Enter():
 
 func Exit():
 	pass
+
+func CanTransition():
+	#if !exitAnimationDone:
+		#return false
+
+	if machine.currentState.name in blacklist:
+		return false
+		
+	for condition in conditions:
+		if condition is Callable and not condition.call():
+			return false
+			
+	if calls.is_empty():
+		return true
+	
+	for call in calls:
+		if call is Callable and call.call():
+			return true
+	
+	return false

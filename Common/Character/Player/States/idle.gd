@@ -1,11 +1,17 @@
 extends State
 
-func Update(delta):
-	father.move_and_slide()
-	if !father.is_on_floor():
-		father.velocity.y += delta*300.0
-	#if Input.is_action_pressed("ui_left")
+func _ready():
+	grandfather = get_parent().get_parent()
+	conditions.append(func(): return !Input.is_action_pressed("ui_right"))
+	conditions.append(func(): return !Input.is_action_pressed("ui_left"))
 
+func Physics_Update(delta):
+	grandfather.move_and_slide()
+	if !grandfather.is_on_floor():
+		grandfather.velocity.y += delta*300.0
+	grandfather.velocity.x = lerp(grandfather.velocity.x, 0.0, 0.1)
+	
+	#if Input.is_action_pressed("ui_left")
 func Enter():
-	if father:
-		father.playAnimationFullBody("idle")
+	if grandfather:
+		grandfather.playAnimationFullBody("idle")

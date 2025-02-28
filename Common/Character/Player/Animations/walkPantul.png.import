@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daut886ncok5r"
-path="res://.godot/imported/ishkeletorpng.png-975bb92b2a37fcc31d8f159af62b64e0.ctex"
+uid="uid://bah5habjtcdxb"
+path="res://.godot/imported/walkPantul.png-8c8c855603a4f0b4ebc9b8b31e352872.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Common/Character/Player/States/ishkeletorpng.png"
-dest_files=["res://.godot/imported/ishkeletorpng.png-975bb92b2a37fcc31d8f159af62b64e0.ctex"]
+source_file="res://Common/Character/Player/Animations/walkPantul.png"
+dest_files=["res://.godot/imported/walkPantul.png-8c8c855603a4f0b4ebc9b8b31e352872.ctex"]
 
 [params]
 

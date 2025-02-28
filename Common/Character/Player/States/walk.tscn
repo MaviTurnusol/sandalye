@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2xfaj27d7bhb"]
+
+[ext_resource type="Script" path="res://Common/Character/Player/States/walk.gd" id="1_o06e5"]
+
+[node name="Walk" type="Node"]
+script = ExtResource("1_o06e5")
+speed = 100.0
