@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c6v5kk4a51koj" path="res://Common/Character/Player/xochiBuyuk.png" id="4_ed4jr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qavg"]
-size = Vector2(959, 18)
+size = Vector2(959, 19)
 
 [node name="WorldSceneTest1" type="Node2D"]
 
@@ -42,7 +42,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="ColorRect" type="ColorRect" parent="floor"]
 offset_left = -2105.0
-offset_top = 268.0
+offset_top = 267.0
 offset_right = 2455.0
 offset_bottom = 273.0
 color = Color(0.277528, 0.277528, 0.277528, 1)
@@ -50,7 +50,7 @@ color = Color(0.277528, 0.277528, 0.277528, 1)
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(383.5, 280)
+position = Vector2(383.5, 279.5)
 shape = SubResource("RectangleShape2D_7qavg")
 
 [node name="Ishkeletorpng" type="Sprite2D" parent="StaticBody2D"]
