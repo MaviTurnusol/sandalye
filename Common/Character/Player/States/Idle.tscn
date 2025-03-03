@@ -4,3 +4,9 @@
 
 [node name="Idle" type="Node"]
 script = ExtResource("1_6mtbd")
+
+[node name="buttonPressTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="buttonPressTimer" to="." method="_on_button_press_timer_timeout"]

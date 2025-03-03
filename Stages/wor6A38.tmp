@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://0064ewbqbx2o"]
+
+[ext_resource type="Texture2D" uid="uid://cx5f8e41dback" path="res://Stages/ishkeletorpng.png" id="2_123oc"]
+[ext_resource type="Texture2D" uid="uid://cgx8plykkooff" path="res://Stages/bgtile.png" id="2_j44gm"]
+[ext_resource type="PackedScene" uid="uid://cwd6s0wcqu4xh" path="res://Common/Character/Player/player.tscn" id="3_rqqlm"]
+[ext_resource type="Texture2D" uid="uid://c6v5kk4a51koj" path="res://Common/Character/Player/xochiBuyuk.png" id="4_ed4jr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qavg"]
+size = Vector2(959, 19)
+
+[node name="WorldSceneTest1" type="Node2D"]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(64, 64)
+repeat_times = 128
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture_filter = 1
+texture = ExtResource("2_j44gm")
+
+[node name="floor" type="Node2D" parent="."]
+
+[node name="ColorRect3" type="ColorRect" parent="floor"]
+offset_left = -757.0
+offset_top = 16.0
+offset_right = 1027.0
+offset_bottom = 278.0
+color = Color(0.687215, 0.687215, 0.687215, 1)
+
+[node name="floorConcrete" type="ColorRect" parent="floor"]
+offset_left = -901.0
+offset_top = 269.0
+offset_right = 1295.0
+offset_bottom = 439.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="floor"]
+offset_left = -887.0
+offset_right = 1295.0
+offset_bottom = 78.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="floor"]
+offset_left = -2105.0
+offset_top = 267.0
+offset_right = 2455.0
+offset_bottom = 273.0
+color = Color(0.277528, 0.277528, 0.277528, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(383.5, 279.5)
+shape = SubResource("RectangleShape2D_7qavg")
+
+[node name="Ishkeletorpng" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(689, 543)
+texture = ExtResource("2_123oc")
+
+[node name="Player" parent="." instance=ExtResource("3_rqqlm")]
+position = Vector2(130, 126)
+
+[node name="XochiBuyuk" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(225, 225)
+texture = ExtResource("4_ed4jr")

@@ -7,7 +7,7 @@ var conditions = []
 var blacklist = []
 var calls = []
 var machine
-var endAnim
+var transitionAnimations = {}
 signal transitioned
 	
 func _ready():
@@ -36,6 +36,8 @@ func CanTransition():
 	for condition in conditions:
 		if condition is Callable and not condition.call():
 			return false
+		if condition is bool and !condition:
+			return false
 			
 	if calls.is_empty():
 		return true
@@ -43,5 +45,13 @@ func CanTransition():
 	for call in calls:
 		if call is Callable and call.call():
 			return true
+		if call is bool and call:
+			return true
 	
 	return false
+
+func boolChecker(boolean):
+	if boolean:
+		return true
+	else:
+		return false

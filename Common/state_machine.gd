@@ -34,12 +34,12 @@ func _physics_process(delta):
 
 func switch_state(newState):
 	if currentState:
-		if currentState.endAnim:
-			get_parent().PlayExitAnimation(currentState.endAnim)
-			nextState = newState
-			return
-		else:
-			currentState.Exit()
+		for anim in currentState.transitionAnimations:
+			if anim == newState.name.to_lower():
+				get_parent().PlayExitAnimation(currentState.transitionAnimations[anim])
+				nextState = newState
+				return
+		currentState.Exit()
 	currentState = newState
 	currentState.Enter()
 

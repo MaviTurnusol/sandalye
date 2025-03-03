@@ -4,4 +4,3 @@
 
 [node name="Walk" type="Node"]
 script = ExtResource("1_o06e5")
-speed = 100.0
