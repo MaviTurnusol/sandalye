@@ -35,6 +35,7 @@ func playAnimationConsequtively(anim1, anim2):
 func AnimationFinished():
 	playAnimationFullBody(animationNextToPlay)
 
+func ExitAnimationFinished():
 	exitAnimEnd.emit()
 	for child in $sprites.get_children():
 		if child.animation_finished.is_connected(ExitAnimationFinished):

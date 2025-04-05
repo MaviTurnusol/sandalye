@@ -1,4 +1,4 @@
-[gd_scene load_steps=202 format=3 uid="uid://cwd6s0wcqu4xh"]
+[gd_scene load_steps=199 format=3 uid="uid://cwd6s0wcqu4xh"]
 
 [ext_resource type="Script" path="res://Common/Character/Player/player.gd" id="1_cwkiy"]
 [ext_resource type="Texture2D" uid="uid://b7fbkylpl0ox3" path="res://Common/Character/Player/Animations/idleSolKol.png" id="2_7aeh0"]
@@ -29,13 +29,6 @@
 [ext_resource type="Texture2D" uid="uid://cvk4k1or5kqoi" path="res://Common/Character/Player/Animations/runKafa.png" id="22_cyh8p"]
 [ext_resource type="Script" path="res://Common/Character/Player/debug_label.gd" id="23_aud1g"]
 [ext_resource type="Texture2D" uid="uid://c2atn6slm0t0n" path="res://Common/Character/Player/Animations/runSagKol.png" id="26_g18qu"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_10kfa"]
-light_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ac3mm"]
-blend_mode = 2
-light_mode = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3tk0s"]
 atlas = ExtResource("2_7aeh0")
@@ -687,10 +680,6 @@ animations = [{
 "name": &"walk",
 "speed": 10.0
 }]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5ccrh"]
-blend_mode = 1
-light_mode = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_628o4"]
 atlas = ExtResource("8_i77xx")
@@ -1347,7 +1336,6 @@ animations = [{
 size = Vector2(9, 78)
 
 [node name="Player" type="CharacterBody2D"]
-material = SubResource("CanvasItemMaterial_10kfa")
 script = ExtResource("1_cwkiy")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initialState") instance=ExtResource("12_wbqvs")]
@@ -1358,38 +1346,29 @@ initialState = NodePath("Idle")
 [node name="Walk" parent="StateMachine" instance=ExtResource("4_2eagi")]
 
 [node name="sprites" type="Marker2D" parent="."]
-material = SubResource("CanvasItemMaterial_ac3mm")
-use_parent_material = true
 
 [node name="solKol" type="AnimatedSprite2D" parent="sprites"]
-use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_uqevw")
 animation = &"run"
 
 [node name="torso" type="AnimatedSprite2D" parent="sprites"]
-use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_dk8f7")
 animation = &"run"
 
 [node name="pantul" type="AnimatedSprite2D" parent="sprites"]
-use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_kxonq")
 animation = &"run"
 frame_progress = 0.867022
 
 [node name="hirka" type="AnimatedSprite2D" parent="sprites"]
-material = SubResource("CanvasItemMaterial_5ccrh")
-use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_sq5a2")
 animation = &"run"
 
 [node name="kafa" type="AnimatedSprite2D" parent="sprites"]
-use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_hcjb6")
 animation = &"run"
 
 [node name="sagKol" type="AnimatedSprite2D" parent="sprites"]
-use_parent_material = true
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_dpary")
 animation = &"run"
@@ -1399,7 +1378,6 @@ position = Vector2(-0.5, 5)
 shape = SubResource("RectangleShape2D_4hq7m")
 
 [node name="debugLabel" type="Label" parent="."]
-visible = false
 offset_left = -21.0
 offset_top = -74.0
 offset_right = 19.0
