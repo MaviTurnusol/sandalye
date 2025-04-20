@@ -17,7 +17,7 @@ diffuse_texture = ExtResource("1_37rpk")
 normal_texture = ExtResource("2_bxdyj")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ypl"]
-size = Vector2(1920, 20)
+size = Vector2(1920, 25)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gv6yw"]
 
@@ -45,14 +45,17 @@ position = Vector2(124, 201)
 texture = ExtResource("7_l237w")
 
 [node name="Sandalye2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(17, 251)
 texture = ExtResource("8_2mfu6")
 
 [node name="Sandalye3" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-19, 252)
 texture = ExtResource("9_5f76x")
 
 [node name="Sandalye" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(622, 251)
 texture = ExtResource("10_pjoua")
 
@@ -64,12 +67,12 @@ texture = ExtResource("10_ijolq")
 position = Vector2(0, 14)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(321, 279)
+position = Vector2(321, 276.5)
 shape = SubResource("RectangleShape2D_f1ypl")
 
 [node name="Player" parent="." instance=ExtResource("2_xtf5v")]
 material = SubResource("CanvasItemMaterial_gv6yw")
-position = Vector2(320, 239)
+position = Vector2(320, 234)
 
 [node name="PointLight2D" type="PointLight2D" parent="Player"]
 visible = false
@@ -82,6 +85,11 @@ height = 4.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -59)
+process_callback = 0
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_left_margin = 0.05
+drag_right_margin = 0.05
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Player"]
 visible = false

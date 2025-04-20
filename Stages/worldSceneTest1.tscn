@@ -54,7 +54,7 @@ position = Vector2(383.5, 279.5)
 shape = SubResource("RectangleShape2D_7qavg")
 
 [node name="Ishkeletorpng" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(689, 543)
+position = Vector2(525, 574)
 texture = ExtResource("2_123oc")
 
 [node name="Player" parent="." instance=ExtResource("3_rqqlm")]
