@@ -1,0 +1,518 @@
+[gd_scene load_steps=29 format=3 uid="uid://cqtqoaci2aoo2"]
+
+[ext_resource type="Script" path="res://Enemies/Omiyotlakatl/omiyotlakatl.gd" id="1_emdco"]
+[ext_resource type="Texture2D" uid="uid://cxo0gqhcvc4ja" path="res://Enemies/Omiyotlakatl/downLeftArmPiece.png" id="1_nuykq"]
+[ext_resource type="Texture2D" uid="uid://bjxmkia0jgw5o" path="res://Enemies/Omiyotlakatl/downRightUpperArm.png" id="1_vp43n"]
+[ext_resource type="Texture2D" uid="uid://b8ufowowhbjm8" path="res://Enemies/Omiyotlakatl/downLeftForearm.png" id="2_cietn"]
+[ext_resource type="Texture2D" uid="uid://dbrg1d8wo5amx" path="res://Enemies/Omiyotlakatl/downRightArmPiece.png" id="2_y6sbg"]
+[ext_resource type="Texture2D" uid="uid://s5lldj2pqwdw" path="res://Enemies/Omiyotlakatl/downRightHand.png" id="3_npey2"]
+[ext_resource type="Texture2D" uid="uid://pruqvunjxya0" path="res://Enemies/Omiyotlakatl/heartContainer.png" id="3_r761a"]
+[ext_resource type="Texture2D" uid="uid://c7i0ytgl04r8t" path="res://Enemies/Omiyotlakatl/upRightArmPiece.png" id="4_8fi6h"]
+[ext_resource type="Texture2D" uid="uid://cnfj6rcy8wgih" path="res://Enemies/Omiyotlakatl/heart.png" id="4_fmr7u"]
+[ext_resource type="Texture2D" uid="uid://5vnoq8xyg6un" path="res://Enemies/Omiyotlakatl/upRightHand.png" id="5_loqvq"]
+[ext_resource type="Texture2D" uid="uid://d25e74dnf4y6h" path="res://Enemies/Omiyotlakatl/skull.png" id="5_mxa2w"]
+[ext_resource type="Texture2D" uid="uid://c0obgyudp652c" path="res://Enemies/Omiyotlakatl/upRightForearm.png" id="6_6mswf"]
+[ext_resource type="Texture2D" uid="uid://cw47esxk1gndn" path="res://Enemies/Omiyotlakatl/upLeftHand.png" id="7_qgu1o"]
+[ext_resource type="Texture2D" uid="uid://bemsdh84c6brl" path="res://Enemies/Omiyotlakatl/upLeftArmPiece.png" id="8_j3vja"]
+[ext_resource type="Texture2D" uid="uid://dhoa3vsjswatw" path="res://Enemies/Omiyotlakatl/upLeftForearm.png" id="9_6ktl5"]
+[ext_resource type="Texture2D" uid="uid://bs1niet2q1cvs" path="res://Enemies/Omiyotlakatl/downLeftHand.png" id="10_7oqhb"]
+[ext_resource type="Texture2D" uid="uid://bqmcdudhroaat" path="res://Enemies/Omiyotlakatl/upLeftFingers.png" id="16_5ekc8"]
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_t061h"]
+target_nodepath = NodePath("../../../IK Targets/ArmR Target")
+tip_nodepath = NodePath("heart/upRightUpperArm/upRightForearm/upRightHand/upRightFingers")
+ccdik_data_chain_length = 3
+joint_data/0/bone_index = 13
+joint_data/0/bone2d_node = NodePath("heart/upRightUpperArm")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = true
+joint_data/0/constraint_angle_min = 40.0
+joint_data/0/constraint_angle_max = 240.0
+joint_data/0/constraint_angle_invert = true
+joint_data/0/constraint_in_localspace = true
+joint_data/0/editor_draw_gizmo = true
+joint_data/1/bone_index = 14
+joint_data/1/bone2d_node = NodePath("heart/upRightUpperArm/upRightForearm")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = true
+joint_data/1/constraint_angle_min = 0.0
+joint_data/1/constraint_angle_max = 260.0
+joint_data/1/constraint_angle_invert = true
+joint_data/1/constraint_in_localspace = true
+joint_data/1/editor_draw_gizmo = true
+joint_data/2/bone_index = 15
+joint_data/2/bone2d_node = NodePath("heart/upRightUpperArm/upRightForearm/upRightHand")
+joint_data/2/rotate_from_joint = false
+joint_data/2/enable_constraint = true
+joint_data/2/constraint_angle_min = 30.0
+joint_data/2/constraint_angle_max = 330.0
+joint_data/2/constraint_angle_invert = true
+joint_data/2/constraint_in_localspace = true
+joint_data/2/editor_draw_gizmo = true
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_qv8a1"]
+target_nodepath = NodePath("../../../IK Targets/FootR Target")
+tip_nodepath = NodePath("heart/downRightUpperArm/downRightForearm/downRightFeet/downRightFingers")
+ccdik_data_chain_length = 3
+joint_data/0/bone_index = 9
+joint_data/0/bone2d_node = NodePath("heart/downRightUpperArm")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = true
+joint_data/0/constraint_angle_min = -20.0
+joint_data/0/constraint_angle_max = 120.0
+joint_data/0/constraint_angle_invert = true
+joint_data/0/constraint_in_localspace = true
+joint_data/0/editor_draw_gizmo = true
+joint_data/1/bone_index = 10
+joint_data/1/bone2d_node = NodePath("heart/downRightUpperArm/downRightForearm")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = true
+joint_data/1/constraint_angle_min = 160.0
+joint_data/1/constraint_angle_max = 360.0
+joint_data/1/constraint_angle_invert = false
+joint_data/1/constraint_in_localspace = true
+joint_data/1/editor_draw_gizmo = true
+joint_data/2/bone_index = 11
+joint_data/2/bone2d_node = NodePath("heart/downRightUpperArm/downRightForearm/downRightFeet")
+joint_data/2/rotate_from_joint = false
+joint_data/2/enable_constraint = true
+joint_data/2/constraint_angle_min = -40.0
+joint_data/2/constraint_angle_max = 20.0
+joint_data/2/constraint_angle_invert = true
+joint_data/2/constraint_in_localspace = true
+joint_data/2/editor_draw_gizmo = true
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_6cslc"]
+target_nodepath = NodePath("../../../IK Targets/ArmL Target")
+tip_nodepath = NodePath("heart/upLeftUpperArm/upLeftForearm/upLeftHand/upLeftFingers")
+ccdik_data_chain_length = 3
+joint_data/0/bone_index = 5
+joint_data/0/bone2d_node = NodePath("heart/upLeftUpperArm")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = false
+joint_data/0/editor_draw_gizmo = true
+joint_data/1/bone_index = 6
+joint_data/1/bone2d_node = NodePath("heart/upLeftUpperArm/upLeftForearm")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = true
+joint_data/1/constraint_angle_min = 80.0
+joint_data/1/constraint_angle_max = 260.0
+joint_data/1/constraint_angle_invert = true
+joint_data/1/constraint_in_localspace = true
+joint_data/1/editor_draw_gizmo = true
+joint_data/2/bone_index = 7
+joint_data/2/bone2d_node = NodePath("heart/upLeftUpperArm/upLeftForearm/upLeftHand")
+joint_data/2/rotate_from_joint = false
+joint_data/2/enable_constraint = true
+joint_data/2/constraint_angle_min = 30.0
+joint_data/2/constraint_angle_max = 330.0
+joint_data/2/constraint_angle_invert = true
+joint_data/2/constraint_in_localspace = true
+joint_data/2/editor_draw_gizmo = true
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_bol21"]
+target_nodepath = NodePath("../../../IK Targets/FootL Target")
+tip_nodepath = NodePath("heart/downLeftUpperArm/downLeftForearm/downLeftFeet/downLeftFingers")
+ccdik_data_chain_length = 3
+joint_data/0/bone_index = 1
+joint_data/0/bone2d_node = NodePath("heart/downLeftUpperArm")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = true
+joint_data/0/constraint_angle_min = -20.0
+joint_data/0/constraint_angle_max = 120.0
+joint_data/0/constraint_angle_invert = true
+joint_data/0/constraint_in_localspace = true
+joint_data/0/editor_draw_gizmo = true
+joint_data/1/bone_index = 2
+joint_data/1/bone2d_node = NodePath("heart/downLeftUpperArm/downLeftForearm")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = true
+joint_data/1/constraint_angle_min = 93.684
+joint_data/1/constraint_angle_max = 331.579
+joint_data/1/constraint_angle_invert = true
+joint_data/1/constraint_in_localspace = true
+joint_data/1/editor_draw_gizmo = true
+joint_data/2/bone_index = 3
+joint_data/2/bone2d_node = NodePath("heart/downLeftUpperArm/downLeftForearm/downLeftFeet")
+joint_data/2/rotate_from_joint = false
+joint_data/2/enable_constraint = true
+joint_data/2/constraint_angle_min = -43.0
+joint_data/2/constraint_angle_max = 18.0
+joint_data/2/constraint_angle_invert = true
+joint_data/2/constraint_in_localspace = true
+joint_data/2/editor_draw_gizmo = true
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_6edao"]
+enabled = true
+modification_count = 4
+modifications/0 = SubResource("SkeletonModification2DCCDIK_t061h")
+modifications/1 = SubResource("SkeletonModification2DCCDIK_qv8a1")
+modifications/2 = SubResource("SkeletonModification2DCCDIK_6cslc")
+modifications/3 = SubResource("SkeletonModification2DCCDIK_bol21")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cdbgw"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ghof"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ri5qs"]
+radius = 5.09902
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c23l3"]
+radius = 7.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ekyj"]
+size = Vector2(57, 33)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eiuyv"]
+height = 86.0
+
+[node name="Omiyotlakatl" type="CharacterBody2D"]
+script = ExtResource("1_emdco")
+
+[node name="stuff" type="Node2D" parent="."]
+
+[node name="bones" type="Node2D" parent="stuff"]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="stuff/bones"]
+modification_stack = SubResource("SkeletonModificationStack2D_6edao")
+
+[node name="heart" type="Bone2D" parent="stuff/bones/Skeleton2D"]
+position = Vector2(3, 42)
+rest = Transform2D(1, 0, 0, 1, 3, 42)
+
+[node name="downLeftUpperArm" type="Bone2D" parent="stuff/bones/Skeleton2D/heart"]
+position = Vector2(-35, -15)
+rotation = 0.0596654
+scale = Vector2(0.999913, 0.999913)
+rest = Transform2D(0.998134, 0.0596248, -0.0596248, 0.998134, -35, -15)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="downLeftForearm" type="Bone2D" parent="stuff/bones/Skeleton2D/heart/downLeftUpperArm"]
+position = Vector2(-59.6562, 23.8965)
+rotation = -0.106466
+scale = Vector2(0.999911, 0.999911)
+rest = Transform2D(0.994249, -0.106255, 0.106255, 0.994249, -59.6562, 23.8965)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="downLeftFeet" type="Bone2D" parent="stuff/bones/Skeleton2D/heart/downLeftUpperArm/downLeftForearm"]
+position = Vector2(73.3867, 24.9084)
+rotation = 0.287986
+scale = Vector2(0.999925, 0.999925)
+rest = Transform2D(0.958746, 0.284, -0.284, 0.958746, 73.3867, 24.9084)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="stuff/bones/Skeleton2D/heart/downLeftUpperArm/downLeftForearm/downLeftFeet"]
+position = Vector2(-1.11947, -7.98416)
+remote_path = NodePath("../../../../../../../body/DownLeftHand")
+
+[node name="downLeftFingers" type="Bone2D" parent="stuff/bones/Skeleton2D/heart/downLeftUpperArm/downLeftForearm/downLeftFeet"]
+position = Vector2(18.9979, -0.283986)
+rest = Transform2D(1, 0, 0, 1, 18.9979, -0.283986)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="stuff/bones/Skeleton2D/heart/downLeftUpperArm/downLeftForearm"]
+position = Vector2(-0.999886, 0.0149462)
+remote_path = NodePath("../../../../../../body/DownLeftForearm")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="stuff/bones/Skeleton2D/heart/downLeftUpperArm"]
+position = Vector2(-67, -4)
+remote_path = NodePath("../../../../../body/downLeftUpperArm")
+
+[node name="upLeftUpperArm" type="Bone2D" parent="stuff/bones/Skeleton2D/heart"]
+position = Vector2(-37, -26)
+rotation = -0.193266
+scale = Vector2(0.999969, 0.999969)
+rest = Transform2D(0.981352, -0.192059, 0.192059, 0.981352, -37, -26)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="upLeftForearm" type="Bone2D" parent="stuff/bones/Skeleton2D/heart/upLeftUpperArm"]
+position = Vector2(-56.0043, -65.0049)
+rotation = -0.0555513
+rest = Transform2D(0.998458, -0.0555228, 0.0555228, 0.998458, -56.0043, -65.0049)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="upLeftHand" type="Bone2D" parent="stuff/bones/Skeleton2D/heart/upLeftUpperArm/upLeftForearm"]
+position = Vector2(28.0017, -63.0041)
+rotation = 0.37423
+scale = Vector2(0.999992, 0.999992)
+rest = Transform2D(0.930782, 0.365553, -0.365553, 0.930782, 28.0017, -63.0041)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = -71.351
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="stuff/bones/Skeleton2D/heart/upLeftUpperArm/upLeftForearm/upLeftHand"]
+position = Vector2(-7, -26)
+remote_path = NodePath("../../../../../../../body/UpRightHand")
+
+[node name="upLeftFingers" type="Bone2D" parent="stuff/bones/Skeleton2D/heart/upLeftUpperArm/upLeftForearm/upLeftHand"]
+position = Vector2(7, -15)
+rest = Transform2D(1, 0, 0, 1, 7, -15)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = -58.378
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="stuff/bones/Skeleton2D/heart/upLeftUpperArm/upLeftForearm"]
+position = Vector2(-1, -64)
+remote_path = NodePath("../../../../../../body/UpRightForearm")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="stuff/bones/Skeleton2D/heart/upLeftUpperArm"]
+position = Vector2(-65, -71)
+remote_path = NodePath("../../../../../body/UpRightArmPiece")
+
+[node name="downRightUpperArm" type="Bone2D" parent="stuff/bones/Skeleton2D/heart"]
+position = Vector2(-3, -42)
+rotation = 0.032449
+scale = Vector2(0.999894, 0.999894)
+rest = Transform2D(0.999368, 0.0324399, -0.0324399, 0.999368, -3, -42)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="downRightForearm" type="Bone2D" parent="stuff/bones/Skeleton2D/heart/downRightUpperArm"]
+position = Vector2(31.9698, 45.9574)
+rotation = -0.659596
+scale = Vector2(0.999796, 0.999796)
+rest = Transform2D(0.999795, 1.7481e-07, -1.7481e-07, 0.999795, 31.9698, 45.9575)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="downRightFeet" type="Bone2D" parent="stuff/bones/Skeleton2D/heart/downRightUpperArm/downRightForearm"]
+position = Vector2(58.0081, 12.0003)
+rotation = 0.313234
+scale = Vector2(0.999893, 0.999893)
+rest = Transform2D(0.95124, 0.308104, -0.308104, 0.95124, 58.0081, 12.0003)
+auto_calculate_length_and_angle = false
+length = 25.216
+bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="stuff/bones/Skeleton2D/heart/downRightUpperArm/downRightForearm/downRightFeet"]
+position = Vector2(0, -18)
+remote_path = NodePath("../../../../../../../body/DownRightHand")
+
+[node name="downRightFingers" type="Bone2D" parent="stuff/bones/Skeleton2D/heart/downRightUpperArm/downRightForearm/downRightFeet"]
+position = Vector2(23, 1)
+rest = Transform2D(1, 0, 0, 1, 23, 1)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="stuff/bones/Skeleton2D/heart/downRightUpperArm/downRightForearm"]
+position = Vector2(0, -1)
+remote_path = NodePath("../../../../../../body/DownRightArmPiece")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="stuff/bones/Skeleton2D/heart/downRightUpperArm"]
+position = Vector2(-3, -2)
+remote_path = NodePath("../../../../../body/DownRightUpperArm")
+
+[node name="upRightUpperArm" type="Bone2D" parent="stuff/bones/Skeleton2D/heart"]
+position = Vector2(-7, -66)
+rotation = 0.136101
+scale = Vector2(0.999874, 0.999874)
+rest = Transform2D(0.954746, -0.297005, 0.297005, 0.954746, -7, -66)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="upRightForearm" type="Bone2D" parent="stuff/bones/Skeleton2D/heart/upRightUpperArm"]
+position = Vector2(47.0032, -60.003)
+rotation = -0.0892099
+scale = Vector2(0.999894, 0.999894)
+rest = Transform2D(0.995918, -0.0890822, 0.0890822, 0.995918, 47.0032, -60.003)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="upRightHand" type="Bone2D" parent="stuff/bones/Skeleton2D/heart/upRightUpperArm/upRightForearm"]
+position = Vector2(64.0036, 41.0038)
+rotation = 0.303339
+scale = Vector2(0.99992, 0.99992)
+rest = Transform2D(0.954268, 0.298685, -0.298685, 0.954268, 64.0036, 41.0038)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="upRightFingers" type="Bone2D" parent="stuff/bones/Skeleton2D/heart/upRightUpperArm/upRightForearm/upRightHand"]
+position = Vector2(14, 14)
+rest = Transform2D(1, 0, 0, 1, 14, 14)
+auto_calculate_length_and_angle = false
+length = 25.0
+bone_angle = 27.429
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="stuff/bones/Skeleton2D/heart/upRightUpperArm/upRightForearm/upRightHand/upRightFingers"]
+position = Vector2(-8, -2)
+remote_path = NodePath("../../../../../../../../body/UpLeftFingers")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="stuff/bones/Skeleton2D/heart/upRightUpperArm/upRightForearm/upRightHand"]
+remote_path = NodePath("../../../../../../../body/UpLeftHand")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="stuff/bones/Skeleton2D/heart/upRightUpperArm/upRightForearm"]
+position = Vector2(0, -1)
+remote_path = NodePath("../../../../../../body/UpLeftForearm")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="stuff/bones/Skeleton2D/heart/upRightUpperArm"]
+position = Vector2(-5, -68)
+remote_path = NodePath("../../../../../body/UpLeftArmPiece")
+
+[node name="skull" type="Bone2D" parent="stuff/bones/Skeleton2D/heart"]
+position = Vector2(-10, -28)
+rest = Transform2D(1, 0, 0, 1, -10, -28)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="stuff/bones/Skeleton2D/heart/skull"]
+position = Vector2(-54, -68)
+remote_path = NodePath("../../../../../body/Skull")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="stuff/bones/Skeleton2D/heart"]
+position = Vector2(-56, -19)
+remote_path = NodePath("../../../../body/HeartContainer")
+
+[node name="body" type="Node2D" parent="stuff"]
+
+[node name="DownRightUpperArm" type="Sprite2D" parent="stuff/body"]
+position = Vector2(-1.6781, -3.19081)
+rotation = 0.498629
+scale = Vector2(0.999897, 0.999897)
+texture = ExtResource("1_vp43n")
+centered = false
+
+[node name="DownRightArmPiece" type="Sprite2D" parent="stuff/body"]
+position = Vector2(5.98445, 54.6513)
+rotation = -0.114418
+scale = Vector2(0.999693, 0.999693)
+texture = ExtResource("2_y6sbg")
+centered = false
+
+[node name="DownRightHand" type="Sprite2D" parent="stuff/body"]
+position = Vector2(65.9087, 42.9685)
+rotation = 0.0460909
+scale = Vector2(0.999598, 0.999598)
+texture = ExtResource("3_npey2")
+centered = false
+
+[node name="UpRightArmPiece" type="Sprite2D" parent="stuff/body"]
+position = Vector2(-115.531, -35.1678)
+rotation = -0.269029
+scale = Vector2(0.999969, 0.999969)
+texture = ExtResource("4_8fi6h")
+centered = false
+
+[node name="UpRightHand" type="Sprite2D" parent="stuff/body"]
+position = Vector2(-71.9171, -121.405)
+rotation = 0.505802
+scale = Vector2(0.999962, 0.999962)
+texture = ExtResource("5_loqvq")
+centered = false
+
+[node name="UpRightForearm" type="Sprite2D" parent="stuff/body"]
+position = Vector2(-107.405, -95.75)
+rotation = -0.0177966
+scale = Vector2(0.999968, 0.999968)
+texture = ExtResource("6_6mswf")
+centered = false
+
+[node name="UpLeftHand" type="Sprite2D" parent="stuff/body"]
+position = Vector2(110.261, -31.2171)
+rotation = 0.543627
+scale = Vector2(0.999685, 0.999685)
+texture = ExtResource("7_qgu1o")
+centered = false
+
+[node name="UpLeftArmPiece" type="Sprite2D" parent="stuff/body"]
+position = Vector2(-0.479187, -92.084)
+rotation = 0.125064
+scale = Vector2(0.999874, 0.999874)
+texture = ExtResource("8_j3vja")
+centered = false
+
+[node name="UpLeftForearm" type="Sprite2D" parent="stuff/body"]
+position = Vector2(50.2017, -78.6604)
+rotation = 0.0878023
+scale = Vector2(0.999768, 0.999768)
+texture = ExtResource("9_6ktl5")
+centered = false
+
+[node name="DownLeftHand" type="Sprite2D" parent="stuff/body"]
+position = Vector2(-28.1516, 48.756)
+rotation = 0.35716
+scale = Vector2(0.999747, 0.999747)
+texture = ExtResource("10_7oqhb")
+centered = false
+
+[node name="downLeftUpperArm" type="Sprite2D" parent="stuff/body"]
+position = Vector2(-86.1215, -12.6872)
+rotation = 0.573096
+scale = Vector2(0.999913, 0.999913)
+texture = ExtResource("1_nuykq")
+centered = false
+
+[node name="DownLeftForearm" type="Sprite2D" parent="stuff/body"]
+position = Vector2(-96.0503, 14.5047)
+rotation = 0.244026
+scale = Vector2(0.999821, 0.999821)
+texture = ExtResource("2_cietn")
+centered = false
+
+[node name="HeartContainer" type="Sprite2D" parent="stuff/body"]
+position = Vector2(-53, 23)
+texture = ExtResource("3_r761a")
+centered = false
+
+[node name="Heart" type="Sprite2D" parent="stuff/body/HeartContainer"]
+position = Vector2(22, 1)
+texture = ExtResource("4_fmr7u")
+centered = false
+
+[node name="Skull" type="Sprite2D" parent="stuff/body"]
+visible = false
+position = Vector2(-61, -54)
+texture = ExtResource("5_mxa2w")
+centered = false
+
+[node name="UpLeftFingers" type="Sprite2D" parent="stuff/body"]
+position = Vector2(109.19, -17.8478)
+rotation = 0.543627
+scale = Vector2(0.999685, 0.999685)
+texture = ExtResource("16_5ekc8")
+centered = false
+
+[node name="IK Targets" type="Node2D" parent="."]
+
+[node name="ArmR Target" type="CharacterBody2D" parent="IK Targets"]
+position = Vector2(115, -12)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IK Targets/ArmR Target"]
+shape = SubResource("CircleShape2D_cdbgw")
+
+[node name="ArmL Target" type="CharacterBody2D" parent="IK Targets"]
+position = Vector2(-65, -105)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IK Targets/ArmL Target"]
+shape = SubResource("CircleShape2D_3ghof")
+
+[node name="FootR Target" type="CharacterBody2D" parent="IK Targets"]
+position = Vector2(88, 63)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IK Targets/FootR Target"]
+shape = SubResource("CircleShape2D_ri5qs")
+
+[node name="FootL Target" type="CharacterBody2D" parent="IK Targets"]
+position = Vector2(-12, 63)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IK Targets/FootL Target"]
+shape = SubResource("CircleShape2D_c23l3")
+
+[node name="HeartMimic" type="CharacterBody2D" parent="IK Targets"]
+position = Vector2(3, 42)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IK Targets/HeartMimic"]
+position = Vector2(-3.5, -2.5)
+shape = SubResource("RectangleShape2D_7ekyj")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="IK Targets/HeartMimic"]
+remote_path = NodePath("../../../stuff/bones/Skeleton2D/heart")
+update_position = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 24)
+shape = SubResource("CapsuleShape2D_eiuyv")
+disabled = true

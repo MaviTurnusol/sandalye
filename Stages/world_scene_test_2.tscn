@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c5iwa1nb2j1r5"]
+[gd_scene load_steps=17 format=3 uid="uid://c5iwa1nb2j1r5"]
 
 [ext_resource type="Texture2D" uid="uid://056kipi7wsds" path="res://Stages/koridor2.png" id="1_37rpk"]
 [ext_resource type="Texture2D" uid="uid://cprgwi6yaca2a" path="res://Stages/koridor2normalmap.png" id="2_bxdyj"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://bmhmvayqyuhek" path="res://Stages/sandalye3.png" id="9_5f76x"]
 [ext_resource type="Texture2D" uid="uid://dqg4r3yiermxv" path="res://Stages/xipe.png" id="10_ijolq"]
 [ext_resource type="Texture2D" uid="uid://ccp86g5ll8rfb" path="res://Stages/sandalye.png" id="10_pjoua"]
+[ext_resource type="PackedScene" uid="uid://wwt66k1dxhmk" path="res://Common/HUD/hud.tscn" id="12_1ml3l"]
+[ext_resource type="PackedScene" uid="uid://cqtqoaci2aoo2" path="res://Enemies/Omiyotlakatl/Omiyotlakatl.tscn" id="13_pp6aq"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_5uiqq"]
 diffuse_texture = ExtResource("1_37rpk")
@@ -65,6 +67,8 @@ texture = ExtResource("10_ijolq")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 14)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(321, 276.5)
@@ -72,7 +76,7 @@ shape = SubResource("RectangleShape2D_f1ypl")
 
 [node name="Player" parent="." instance=ExtResource("2_xtf5v")]
 material = SubResource("CanvasItemMaterial_gv6yw")
-position = Vector2(320, 234)
+position = Vector2(-6, 229)
 
 [node name="PointLight2D" type="PointLight2D" parent="Player"]
 visible = false
@@ -84,9 +88,8 @@ texture_scale = 2.42
 height = 4.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, -59)
+position = Vector2(0, -54)
 process_callback = 0
-position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_left_margin = 0.05
 drag_right_margin = 0.05
@@ -107,3 +110,8 @@ energy = 2.38
 texture = ExtResource("4_l3uqv")
 texture_scale = 1.33
 height = 4.0
+
+[node name="HUD" parent="." instance=ExtResource("12_1ml3l")]
+
+[node name="Omiyotlakatl" parent="." instance=ExtResource("13_pp6aq")]
+position = Vector2(-187, 212)
