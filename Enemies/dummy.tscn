@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://dettn18yt1itw"]
+
+[ext_resource type="Texture2D" uid="uid://bdov32awb1xr5" path="res://Stages/Outside/fleshbot.png" id="1_ac2rh"]
+[ext_resource type="Shader" uid="uid://dkrnvw1dwdc3" path="res://Enemies/hitflash.tres" id="1_wmx7h"]
+[ext_resource type="Script" path="res://Enemies/dummy.gd" id="2_gdlqv"]
+[ext_resource type="PackedScene" uid="uid://un0mpc5c3l8e" path="res://Common/Components/hurt_box.tscn" id="2_nyafn"]
+[ext_resource type="PackedScene" uid="uid://c2yf87532v15n" path="res://Common/Components/healthComp.tscn" id="3_rw1g5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t3xha"]
+shader = ExtResource("1_wmx7h")
+shader_parameter/enabled = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_flgu8"]
+size = Vector2(15, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1y2e"]
+size = Vector2(21, 48)
+
+[sub_resource type="Animation" id="Animation_5go0i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_aeup0"]
+resource_name = "hitflash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ca8j3"]
+_data = {
+"RESET": SubResource("Animation_5go0i"),
+"hitflash": SubResource("Animation_aeup0")
+}
+
+[node name="dummy" type="CharacterBody2D" groups=["enemy"]]
+material = SubResource("ShaderMaterial_t3xha")
+collision_layer = 0
+script = ExtResource("2_gdlqv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(0, -24)
+texture = ExtResource("1_ac2rh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -23)
+shape = SubResource("RectangleShape2D_flgu8")
+
+[node name="hurtBox" parent="." node_paths=PackedStringArray("healthComp", "parent") instance=ExtResource("2_nyafn")]
+collision_layer = 2
+collision_mask = 0
+healthComp = NodePath("../HealthComp")
+parent = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox"]
+position = Vector2(-1.5, -24)
+shape = SubResource("RectangleShape2D_f1y2e")
+
+[node name="HealthComp" parent="." instance=ExtResource("3_rw1g5")]
+max_health = 10
+
+[node name="hitflashPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ca8j3")
+}

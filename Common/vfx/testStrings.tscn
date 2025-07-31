@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxsw6cgvc34o"]
+
+[ext_resource type="Texture2D" uid="uid://c8cx5sj5bu2sv" path="res://Common/vfx/stringsSheet.png" id="1_q8gyj"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fddso"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hyunp"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 6.0
+angle_min = -30.0
+angle_max = 30.0
+angular_velocity_min = -40.0
+angular_velocity_max = 40.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 4.0
+anim_speed_max = 4.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="string1" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_fddso")
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_hyunp")
+texture = ExtResource("1_q8gyj")

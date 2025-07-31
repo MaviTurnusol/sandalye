@@ -1,0 +1,191 @@
+[gd_scene load_steps=19 format=4 uid="uid://bkxjehq8jyadd"]
+
+[ext_resource type="Texture2D" uid="uid://cg3napou2k6wr" path="res://Stages/Outside/ParallaxBG/zarkSmallBgSky.png" id="1_ow2jv"]
+[ext_resource type="Texture2D" uid="uid://p51mvm3mbebh" path="res://Stages/Outside/ParallaxBG/zarkSmallClouds0.png" id="2_203bd"]
+[ext_resource type="Texture2D" uid="uid://bynft6mihrnsr" path="res://Stages/Outside/ParallaxBG/zarkSmallClouds1.png" id="3_gmuw8"]
+[ext_resource type="Texture2D" uid="uid://bmlcqafi8sqbh" path="res://Stages/Outside/ParallaxBG/zarkSmallClouds2.png" id="4_i022h"]
+[ext_resource type="Texture2D" uid="uid://bqdbkv1yeudjb" path="res://Stages/Outside/ParallaxBG/zarkSmallGrass0.png" id="5_6ijk6"]
+[ext_resource type="Texture2D" uid="uid://b2kxtau67flic" path="res://Stages/Outside/ParallaxBG/zarkSmallCity0.png" id="6_yhwff"]
+[ext_resource type="Texture2D" uid="uid://bn6q642j8wnu0" path="res://Stages/Outside/ParallaxBG/zarkSmallGrass1.png" id="7_qn2c5"]
+[ext_resource type="Texture2D" uid="uid://b61y1parnjrmi" path="res://Stages/Outside/ParallaxBG/sehirsheet.png" id="8_y116g"]
+[ext_resource type="Texture2D" uid="uid://qd3vfdi81drb" path="res://Stages/Outside/testWall.png" id="9_86xkk"]
+[ext_resource type="PackedScene" uid="uid://cwd6s0wcqu4xh" path="res://Common/Character/Player/player.tscn" id="10_ludke"]
+[ext_resource type="PackedScene" uid="uid://dettn18yt1itw" path="res://Enemies/dummy.tscn" id="11_5uer0"]
+[ext_resource type="PackedScene" uid="uid://cqtqoaci2aoo2" path="res://Enemies/Omiyotlakatl/Omiyotlakatl.tscn" id="12_h5ybu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hw55u"]
+texture = ExtResource("8_y116g")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+4:0/0 = 0
+3:1/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+3:2/0 = 0
+2:2/0 = 0
+1:2/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+3:3/0 = 0
+2:3/0 = 0
+1:3/0 = 0
+0:3/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+5:0/0 = 0
+5:3/0 = 0
+4:3/0 = 0
+6:1/0 = 0
+8:2/0 = 0
+8:1/0 = 0
+7:1/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:2/0 = 0
+9:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_250ao"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_hw55u")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_043h1"]
+size = Vector2(2353, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sfra5"]
+radius = 14.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1urk"]
+size = Vector2(61.5, 115)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evhp3"]
+size = Vector2(326, 1)
+
+[node name="outside" type="Node2D"]
+
+[node name="background" type="Node2D" parent="."]
+modulate = Color(0.691357, 0.691357, 0.691357, 1)
+
+[node name="Parallax2D" type="Parallax2D" parent="background"]
+repeat_size = Vector2(2880, 0)
+repeat_times = 2
+
+[node name="texture" type="Sprite2D" parent="background/Parallax2D"]
+position = Vector2(0, -91)
+texture = ExtResource("1_ow2jv")
+centered = false
+
+[node name="Parallax2D2" type="Parallax2D" parent="background"]
+repeat_size = Vector2(1920, 0)
+repeat_times = 2
+
+[node name="texture" type="Sprite2D" parent="background/Parallax2D2"]
+position = Vector2(0, 5)
+texture = ExtResource("2_203bd")
+centered = false
+
+[node name="Parallax2D3" type="Parallax2D" parent="background"]
+repeat_size = Vector2(1920, 0)
+repeat_times = 2
+
+[node name="texture" type="Sprite2D" parent="background/Parallax2D3"]
+position = Vector2(0, -23)
+texture = ExtResource("3_gmuw8")
+centered = false
+
+[node name="Parallax2D4" type="Parallax2D" parent="background"]
+repeat_size = Vector2(1920, 0)
+repeat_times = 2
+
+[node name="texture" type="Sprite2D" parent="background/Parallax2D4"]
+position = Vector2(0, -17)
+texture = ExtResource("4_i022h")
+centered = false
+
+[node name="Parallax2D5" type="Parallax2D" parent="background"]
+repeat_size = Vector2(2880, 0)
+repeat_times = 2
+
+[node name="texture" type="Sprite2D" parent="background/Parallax2D5"]
+position = Vector2(0, -136)
+texture = ExtResource("5_6ijk6")
+centered = false
+
+[node name="Parallax2D6" type="Parallax2D" parent="background"]
+repeat_size = Vector2(2880, 0)
+repeat_times = 2
+
+[node name="texture" type="Sprite2D" parent="background/Parallax2D6"]
+position = Vector2(0, -91)
+texture = ExtResource("6_yhwff")
+centered = false
+
+[node name="Parallax2D7" type="Parallax2D" parent="background"]
+repeat_size = Vector2(2880, 0)
+repeat_times = 2
+
+[node name="texture" type="Sprite2D" parent="background/Parallax2D7"]
+position = Vector2(0, -133)
+texture = ExtResource("7_qn2c5")
+centered = false
+
+[node name="map" type="Node2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="map"]
+position = Vector2(0, -6)
+tile_map_data = PackedByteArray("AAD//woAAAAAAAAAAAD//wsAAAAAAAEAAAD//wwAAAABAAIAAAAAAAoAAAABAAAAAAAAAAsAAAABAAEAAAAAAAwAAAABAAIAAAABAAoAAAAAAAAAAAABAAsAAAAAAAEAAAABAAwAAAABAAIAAAACAAoAAAABAAAAAAACAAsAAAABAAEAAAACAAwAAAABAAIAAAADAAoAAAAAAAAAAAADAAsAAAAAAAEAAAADAAwAAAABAAIAAAAEAAoAAAABAAAAAAAEAAsAAAABAAEAAAAEAAwAAAABAAIAAAAFAAoAAAAAAAAAAAAFAAsAAAAAAAEAAAAFAAwAAAABAAIAAAAGAAoAAAABAAAAAAAGAAsAAAABAAEAAAAGAAwAAAABAAIAAAAHAAoAAAAAAAAAAAAHAAsAAAAAAAEAAAAHAAwAAAABAAIAAAAIAAoAAAABAAAAAAAIAAsAAAABAAEAAAAIAAwAAAABAAIAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAEAAAAJAAwAAAABAAIAAAAKAAoAAAABAAAAAAAKAAsAAAABAAEAAAAKAAwAAAABAAIAAAALAAoAAAAAAAAAAAALAAsAAAAAAAEAAAALAAwAAAABAAIAAAAMAAoAAAABAAAAAAAMAAsAAAABAAEAAAAMAAwAAAABAAIAAAANAAoAAAAAAAAAAAANAAsAAAAAAAEAAAANAAwAAAABAAIAAAAOAAoAAAABAAAAAAAOAAsAAAABAAEAAAAOAAwAAAABAAIAAAAPAAoAAAAAAAAAAAAPAAsAAAAAAAEAAAAPAAwAAAABAAIAAAAQAAoAAAABAAAAAAAQAAsAAAABAAEAAAAQAAwAAAABAAIAAAARAAoAAAAAAAAAAAARAAsAAAAAAAEAAAARAAwAAAABAAIAAAASAAoAAAABAAAAAAASAAsAAAABAAEAAAASAAwAAAABAAIAAAATAAoAAAAAAAAAAAATAAsAAAAAAAEAAAATAAwAAAABAAIAAAAUAAoAAAABAAAAAAAUAAsAAAABAAEAAAAUAAwAAAABAAIAAAA=")
+tile_set = SubResource("TileSet_250ao")
+
+[node name="TestWall" type="Sprite2D" parent="map"]
+position = Vector2(323, 263)
+texture = ExtResource("9_86xkk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = 483.0
+offset_top = 203.0
+offset_right = 544.0
+offset_bottom = 318.0
+color = Color(0, 0, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 48)
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(624.5, 280)
+shape = SubResource("RectangleShape2D_043h1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(417, 250)
+shape = SubResource("CircleShape2D_sfra5")
+disabled = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(513.25, 212.5)
+shape = SubResource("RectangleShape2D_o1urk")
+disabled = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(312, 102)
+shape = SubResource("RectangleShape2D_evhp3")
+one_way_collision = true
+
+[node name="dummy" parent="." instance=ExtResource("11_5uer0")]
+position = Vector2(316, 307)
+collision_layer = 2
+collision_mask = 2
+
+[node name="Player" parent="." instance=ExtResource("10_ludke")]
+position = Vector2(200, 267)
+
+[node name="Omiyotlakatl" parent="." instance=ExtResource("12_h5ybu")]
+position = Vector2(683, 240)
