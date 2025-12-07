@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=13 format=3 uid="uid://d0g262jejfbkh"]
+
+[ext_resource type="Resource" uid="uid://c6h47cwl630hd" path="res://charTextBox.tres" id="1_b0awe"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_a7pbc"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="3_6uq7n"]
+
+[sub_resource type="Resource" id="Resource_ngmco"]
+script = ExtResource("2_a7pbc")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_iannp"]
+script = ExtResource("2_a7pbc")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_n6wgs"]
+script = ExtResource("2_a7pbc")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_clccd"]
+script = ExtResource("2_a7pbc")
+overrides = {
+"box_panel": "\"res://CustomTextboxTest/teccizblankbubble.tres\""
+}
+
+[sub_resource type="Resource" id="Resource_aaxr7"]
+script = ExtResource("2_a7pbc")
+overrides = {
+"box_color_custom": "Color(1, 1, 1, 1)",
+"box_color_use_global": "false",
+"box_panel": "\"res://CustomTextboxTest/teccizinner.tres\"",
+"box_size": "Vector2(362.48, 89.96)",
+"text_alignment": "1"
+}
+
+[sub_resource type="Resource" id="Resource_ueye2"]
+script = ExtResource("2_a7pbc")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_i0jqw"]
+script = ExtResource("2_a7pbc")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_ebjcw"]
+script = ExtResource("2_a7pbc")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_b7r87"]
+script = ExtResource("2_a7pbc")
+overrides = {}
+
+[resource]
+script = ExtResource("3_6uq7n")
+name = "textboxTest"
+inherits = ExtResource("1_b0awe")
+layer_list = Array[String](["10", "11", "12", "13", "14", "15", "16", "17"])
+layer_info = {
+"": SubResource("Resource_ngmco"),
+"10": SubResource("Resource_iannp"),
+"11": SubResource("Resource_n6wgs"),
+"12": SubResource("Resource_clccd"),
+"13": SubResource("Resource_aaxr7"),
+"14": SubResource("Resource_ueye2"),
+"15": SubResource("Resource_i0jqw"),
+"16": SubResource("Resource_ebjcw"),
+"17": SubResource("Resource_b7r87")
+}
+base_overrides = {}
+layers = Array[ExtResource("2_a7pbc")]([])
+metadata/_latest_layer = "12"

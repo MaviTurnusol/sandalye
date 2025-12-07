@@ -1,0 +1,122 @@
+[gd_scene load_steps=18 format=3 uid="uid://c5iwa1nb2j1r5"]
+
+[ext_resource type="Texture2D" uid="uid://056kipi7wsds" path="res://Stages/koridor2.png" id="1_37rpk"]
+[ext_resource type="Texture2D" uid="uid://cprgwi6yaca2a" path="res://Stages/koridor2normalmap.png" id="2_bxdyj"]
+[ext_resource type="PackedScene" uid="uid://cwd6s0wcqu4xh" path="res://Common/Character/Player/player.tscn" id="2_xtf5v"]
+[ext_resource type="Texture2D" uid="uid://bb3sqanhcnlvw" path="res://Stages/kapi.png" id="3_tht7j"]
+[ext_resource type="Texture2D" uid="uid://cbt5y6aok12nc" path="res://Stages/light.png" id="4_l3uqv"]
+[ext_resource type="Texture2D" uid="uid://vxggyqodhrj" path="res://Stages/light2.png" id="4_t6ex1"]
+[ext_resource type="Texture2D" uid="uid://d1d74gweum62v" path="res://Stages/kapi2.png" id="7_l237w"]
+[ext_resource type="Texture2D" uid="uid://bsod3ki100qsb" path="res://Stages/sandalye2.png" id="8_2mfu6"]
+[ext_resource type="Texture2D" uid="uid://bmhmvayqyuhek" path="res://Stages/sandalye3.png" id="9_5f76x"]
+[ext_resource type="Texture2D" uid="uid://dqg4r3yiermxv" path="res://Stages/xipe.png" id="10_ijolq"]
+[ext_resource type="Texture2D" uid="uid://ccp86g5ll8rfb" path="res://Stages/sandalye.png" id="10_pjoua"]
+[ext_resource type="PackedScene" uid="uid://wwt66k1dxhmk" path="res://Common/HUD/hud.tscn" id="12_1ml3l"]
+[ext_resource type="PackedScene" uid="uid://cqtqoaci2aoo2" path="res://Enemies/Omiyotlakatl/Omiyotlakatl.tscn" id="13_pp6aq"]
+[ext_resource type="Texture2D" uid="uid://b67hc8rucdh6x" path="res://Stages/WhatsApp Image 2025-05-24 at 9.33.11 AM.jpeg" id="14_10xu6"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_5uiqq"]
+diffuse_texture = ExtResource("1_37rpk")
+normal_texture = ExtResource("2_bxdyj")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ypl"]
+size = Vector2(1920, 25)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gv6yw"]
+
+[node name="worldSceneTest2" type="Node2D"]
+
+[node name="WhatsAppImage2025-05-24At9_33_11Am" type="Sprite2D" parent="."]
+position = Vector2(1491, 153)
+texture = ExtResource("14_10xu6")
+
+[node name="Koridor4" type="Sprite2D" parent="."]
+position = Vector2(960, 180)
+texture = SubResource("CanvasTexture_5uiqq")
+
+[node name="Koridor2" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+texture = SubResource("CanvasTexture_5uiqq")
+
+[node name="Koridor3" type="Sprite2D" parent="."]
+position = Vector2(-320, 180)
+texture = SubResource("CanvasTexture_5uiqq")
+
+[node name="Kapi" type="Sprite2D" parent="."]
+position = Vector2(364, 124)
+texture = ExtResource("3_tht7j")
+centered = false
+
+[node name="Kapi2" type="Sprite2D" parent="."]
+position = Vector2(124, 201)
+texture = ExtResource("7_l237w")
+
+[node name="Sandalye2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(17, 251)
+texture = ExtResource("8_2mfu6")
+
+[node name="Sandalye3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-19, 252)
+texture = ExtResource("9_5f76x")
+
+[node name="Sandalye" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(622, 251)
+texture = ExtResource("10_pjoua")
+
+[node name="Xipe" type="Sprite2D" parent="."]
+position = Vector2(236, 207)
+texture = ExtResource("10_ijolq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 14)
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(321, 276.5)
+shape = SubResource("RectangleShape2D_f1ypl")
+
+[node name="Player" parent="." instance=ExtResource("2_xtf5v")]
+material = SubResource("CanvasItemMaterial_gv6yw")
+position = Vector2(-6, 229)
+
+[node name="PointLight2D" type="PointLight2D" parent="Player"]
+visible = false
+position = Vector2(-1, -6)
+color = Color(0.270222, 0.270222, 0.270222, 1)
+energy = 10.01
+texture = ExtResource("4_t6ex1")
+texture_scale = 2.42
+height = 4.0
+
+[node name="Camera2D2" type="Camera2D" parent="Player"]
+position = Vector2(0, -54)
+process_callback = 0
+drag_horizontal_enabled = true
+drag_left_margin = 0.05
+drag_right_margin = 0.05
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Player"]
+visible = false
+position = Vector2(141, -45)
+height = 0.16
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.370364, 0.370365, 0.370364, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(761, 120)
+energy = 2.38
+texture = ExtResource("4_l3uqv")
+texture_scale = 1.33
+height = 4.0
+
+[node name="HUD" parent="." instance=ExtResource("12_1ml3l")]
+
+[node name="Omiyotlakatl" parent="." instance=ExtResource("13_pp6aq")]
+position = Vector2(-531, 198)

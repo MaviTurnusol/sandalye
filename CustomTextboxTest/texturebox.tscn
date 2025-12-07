@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxu2ves0ilcvm"]
+
+[ext_resource type="StyleBox" uid="uid://d4cyphlfmeddo" path="res://CustomTextboxTest/teccizblankbubble.tres" id="1_tyhgw"]
+
+[node name="Texturebox" type="PanelContainer"]
+anchors_preset = -1
+anchor_left = -0.053
+anchor_right = 0.12
+anchor_bottom = 0.049
+offset_left = 376.76
+offset_top = 635.0
+offset_right = 1474.6
+offset_bottom = 1012.08
+size_flags_horizontal = 0
+theme_override_styles/panel = ExtResource("1_tyhgw")

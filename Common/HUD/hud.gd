@@ -13,7 +13,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#_health_regen(delta)
+	_health_regen(delta)
 	pass
 
 func _draw_healthbar():

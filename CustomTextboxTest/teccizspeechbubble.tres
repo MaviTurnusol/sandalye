@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://c170xpgbryfoo"]
+
+[ext_resource type="Texture2D" uid="uid://bpfbqsxmnu30f" path="res://CustomTextboxTest/Tecciz_SpeechBlank.svg" id="1_ub6u8"]
+
+[resource]
+texture = ExtResource("1_ub6u8")

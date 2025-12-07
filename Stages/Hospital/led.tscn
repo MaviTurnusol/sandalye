@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://br45swygqlpac"]
+
+[ext_resource type="Texture2D" uid="uid://c3d3ycye7oqki" path="res://Stages/Hospital/ledOn.png" id="1_35i1c"]
+[ext_resource type="Texture2D" uid="uid://cbt5y6aok12nc" path="res://Stages/light.png" id="2_1mffj"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4ve1n"]
+polygon = PackedVector2Array(-43, 3, -43, -2, 43, -2, 43, 3, 45, 0, 45, -4, -45, -4, -45, 1)
+
+[node name="LedOn" type="Sprite2D"]
+modulate = Color(3, 3, 3, 1)
+texture = ExtResource("1_35i1c")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(3, 3, 3, 1)
+range_item_cull_mask = 2
+texture = ExtResource("2_1mffj")
+texture_scale = 2.9
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+texture = ExtResource("2_1mffj")
+texture_scale = 2.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_4ve1n")
+occluder_light_mask = 3

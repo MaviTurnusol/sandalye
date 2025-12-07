@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cqtqoaci2aoo2"]
+[gd_scene load_steps=47 format=3 uid="uid://cqtqoaci2aoo2"]
 
 [ext_resource type="Script" path="res://Enemies/Omiyotlakatl/omiyotlakatl.gd" id="1_emdco"]
 [ext_resource type="Texture2D" uid="uid://cxo0gqhcvc4ja" path="res://Enemies/Omiyotlakatl/downLeftArmPiece.png" id="1_nuykq"]
@@ -16,10 +16,12 @@
 [ext_resource type="Texture2D" uid="uid://bemsdh84c6brl" path="res://Enemies/Omiyotlakatl/upLeftArmPiece.png" id="8_j3vja"]
 [ext_resource type="Texture2D" uid="uid://dhoa3vsjswatw" path="res://Enemies/Omiyotlakatl/upLeftForearm.png" id="9_6ktl5"]
 [ext_resource type="Texture2D" uid="uid://bs1niet2q1cvs" path="res://Enemies/Omiyotlakatl/downLeftHand.png" id="10_7oqhb"]
+[ext_resource type="PackedScene" uid="uid://dqvwyvm4o43j1" path="res://Common/Components/hit_box.tscn" id="12_22hb2"]
 [ext_resource type="Texture2D" uid="uid://bqmcdudhroaat" path="res://Enemies/Omiyotlakatl/upLeftFingers.png" id="16_5ekc8"]
 [ext_resource type="Shader" uid="uid://dkrnvw1dwdc3" path="res://Enemies/hitflash.tres" id="16_e56xd"]
 [ext_resource type="PackedScene" uid="uid://un0mpc5c3l8e" path="res://Common/Components/hurt_box.tscn" id="18_28l7h"]
 [ext_resource type="PackedScene" uid="uid://c2yf87532v15n" path="res://Common/Components/healthComp.tscn" id="19_4ymtr"]
+[ext_resource type="Script" path="res://Enemies/room_detector.gd" id="22_vlhte"]
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_t061h"]
 target_nodepath = NodePath("../../../IK Targets/ArmR Target")
@@ -148,6 +150,12 @@ modifications/0 = SubResource("SkeletonModification2DCCDIK_t061h")
 modifications/1 = SubResource("SkeletonModification2DCCDIK_qv8a1")
 modifications/2 = SubResource("SkeletonModification2DCCDIK_6cslc")
 modifications/3 = SubResource("SkeletonModification2DCCDIK_bol21")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_by4wt"]
+size = Vector2(20, 41.529)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxvjn"]
+size = Vector2(50.8819, 13.5706)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b6lmd"]
 shader = ExtResource("16_e56xd")
@@ -585,6 +593,21 @@ _data = {
 "float": SubResource("Animation_raanp")
 }
 
+[sub_resource type="Animation" id="Animation_7hgyf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("stuff/body/HeartContainer/Heart:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_eyok2"]
 resource_name = "hitflash"
 length = 0.2
@@ -599,21 +622,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_7hgyf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("stuff/body/HeartContainer/Heart:material:shader_parameter/enabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_65qiw"]
@@ -643,16 +651,16 @@ rest = Transform2D(0.998134, 0.0596248, -0.0596248, 0.998134, -35, -15)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="downLeftForearm" type="Bone2D" parent="stuff/bones/Skeleton2D/heart/downLeftUpperArm"]
-position = Vector2(-59.6562, 23.8965)
-rotation = 0.10832
-scale = Vector2(0.999909, 0.999909)
+position = Vector2(-59.656, 23.8963)
+rotation = 0.108322
+scale = Vector2(0.999902, 0.999902)
 rest = Transform2D(0.994249, -0.106255, 0.106255, 0.994249, -59.6562, 23.8965)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="downLeftFeet" type="Bone2D" parent="stuff/bones/Skeleton2D/heart/downLeftUpperArm/downLeftForearm"]
 position = Vector2(73.3866, 24.9084)
-rotation = -0.622199
-scale = Vector2(0.999924, 0.999924)
+rotation = -0.622175
+scale = Vector2(0.999925, 0.999925)
 rest = Transform2D(0.958746, 0.284, -0.284, 0.958746, 73.3867, 24.9084)
 metadata/_local_pose_override_enabled_ = true
 
@@ -687,9 +695,9 @@ rest = Transform2D(0.998458, -0.0555228, 0.0555228, 0.998458, -56.0043, -65.0049
 metadata/_local_pose_override_enabled_ = true
 
 [node name="upLeftHand" type="Bone2D" parent="stuff/bones/Skeleton2D/heart/upLeftUpperArm/upLeftForearm"]
-position = Vector2(25.6881, -51.9136)
-rotation = 0.449302
-scale = Vector2(0.999994, 0.999994)
+position = Vector2(25.688, -51.9136)
+rotation = 0.449307
+scale = Vector2(0.999996, 0.999996)
 rest = Transform2D(0.930782, 0.365553, -0.365553, 0.930782, 28.0017, -63.0041)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -717,21 +725,21 @@ remote_path = NodePath("../../../../../body/UpRightArmPiece")
 
 [node name="downRightUpperArm" type="Bone2D" parent="stuff/bones/Skeleton2D/heart"]
 position = Vector2(-3, -42)
-rotation = 0.00745512
-scale = Vector2(0.999893, 0.999893)
+rotation = 0.00720407
+scale = Vector2(0.999891, 0.999891)
 rest = Transform2D(0.999368, 0.0324399, -0.0324399, 0.999368, -3, -42)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="downRightForearm" type="Bone2D" parent="stuff/bones/Skeleton2D/heart/downRightUpperArm"]
 position = Vector2(31.9698, 45.9575)
-rotation = 0.00354864
-scale = Vector2(0.999796, 0.999796)
+rotation = 0.00416381
+scale = Vector2(0.999795, 0.999795)
 rest = Transform2D(0.999795, 1.7481e-07, -1.7481e-07, 0.999795, 31.9698, 45.9575)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="downRightFeet" type="Bone2D" parent="stuff/bones/Skeleton2D/heart/downRightUpperArm/downRightForearm"]
-position = Vector2(58.0082, 12.0003)
-rotation = 0.308605
+position = Vector2(58.0083, 12.0004)
+rotation = 0.307818
 scale = Vector2(0.999894, 0.999894)
 rest = Transform2D(0.95124, 0.308104, -0.308104, 0.95124, 58.0081, 12.0003)
 auto_calculate_length_and_angle = false
@@ -757,21 +765,21 @@ remote_path = NodePath("../../../../../body/DownRightUpperArm")
 
 [node name="upRightUpperArm" type="Bone2D" parent="stuff/bones/Skeleton2D/heart"]
 position = Vector2(-7, -66)
-rotation = 1.12133
+rotation = 1.13925
 scale = Vector2(0.999848, 0.999848)
 rest = Transform2D(0.954746, -0.297005, 0.297005, 0.954746, -7, -66)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="upRightForearm" type="Bone2D" parent="stuff/bones/Skeleton2D/heart/upRightUpperArm"]
 position = Vector2(47.0032, -60.003)
-rotation = -0.839024
+rotation = -0.868235
 scale = Vector2(0.999894, 0.999894)
 rest = Transform2D(0.995918, -0.0890822, 0.0890822, 0.995918, 47.0032, -60.003)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="upRightHand" type="Bone2D" parent="stuff/bones/Skeleton2D/heart/upRightUpperArm/upRightForearm"]
 position = Vector2(64.0036, 41.0038)
-rotation = -0.2125
+rotation = -0.213537
 scale = Vector2(0.99992, 0.99992)
 rest = Transform2D(0.954268, 0.298685, -0.298685, 0.954268, 64.0036, 41.0038)
 metadata/_local_pose_override_enabled_ = true
@@ -813,23 +821,23 @@ remote_path = NodePath("../../../../body/HeartContainer")
 [node name="body" type="Node2D" parent="stuff"]
 
 [node name="DownRightUpperArm" type="Sprite2D" parent="stuff/body"]
-position = Vector2(-2.98527, -2.02117)
-rotation = 0.00715283
-scale = Vector2(0.999883, 0.999883)
+position = Vector2(-2.9852, -2.0213)
+rotation = 0.00719467
+scale = Vector2(0.999887, 0.999887)
 texture = ExtResource("1_vp43n")
 centered = false
 
 [node name="DownRightArmPiece" type="Sprite2D" parent="stuff/body"]
-position = Vector2(31.6478, 45.1802)
-rotation = 0.01143
-scale = Vector2(0.999675, 0.999675)
+position = Vector2(31.6462, 45.1816)
+rotation = 0.0113851
+scale = Vector2(0.999681, 0.999681)
 texture = ExtResource("2_y6sbg")
 centered = false
 
 [node name="DownRightHand" type="Sprite2D" parent="stuff/body"]
-position = Vector2(95.1287, 41.7546)
-rotation = 0.319108
-scale = Vector2(0.999564, 0.999564)
+position = Vector2(95.13, 41.7534)
+rotation = 0.319168
+scale = Vector2(0.999576, 0.999576)
 texture = ExtResource("3_npey2")
 centered = false
 
@@ -841,64 +849,87 @@ texture = ExtResource("4_8fi6h")
 centered = false
 
 [node name="UpRightHand" type="Sprite2D" parent="stuff/body"]
-position = Vector2(-38.95, -97.8843)
-rotation = 0.884013
-scale = Vector2(0.999665, 0.999665)
+position = Vector2(-38.9499, -97.8844)
+rotation = 0.884018
+scale = Vector2(0.999667, 0.999667)
 texture = ExtResource("5_loqvq")
 centered = false
 
+[node name="HitBox" parent="stuff/body/UpRightHand" node_paths=PackedStringArray("father") instance=ExtResource("12_22hb2")]
+monitoring = true
+monitorable = true
+atk = 40.0
+alwaysActive = true
+father = NodePath("../../../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stuff/body/UpRightHand/HitBox"]
+position = Vector2(9.43997, 21.1567)
+shape = SubResource("RectangleShape2D_by4wt")
+
 [node name="UpRightForearm" type="Sprite2D" parent="stuff/body"]
-position = Vector2(-77.1418, -93.0982)
-rotation = 0.434711
-scale = Vector2(0.999671, 0.999671)
+position = Vector2(-77.1417, -93.0982)
+rotation = 0.43471
+scale = Vector2(0.99967, 0.99967)
 texture = ExtResource("6_6mswf")
 centered = false
 
 [node name="UpLeftHand" type="Sprite2D" parent="stuff/body"]
-position = Vector2(120.831, 50.2249)
-rotation = 0.0573993
-scale = Vector2(0.999661, 0.999661)
+position = Vector2(120.83, 50.225)
+rotation = 0.0573855
+scale = Vector2(0.999663, 0.999663)
 texture = ExtResource("7_qgu1o")
 centered = false
 
 [node name="UpLeftArmPiece" type="Sprite2D" parent="stuff/body"]
-position = Vector2(55.6689, -56.9728)
+position = Vector2(55.669, -56.9727)
 rotation = 1.13936
 scale = Vector2(0.999848, 0.999848)
 texture = ExtResource("8_j3vja")
 centered = false
 
 [node name="UpLeftForearm" type="Sprite2D" parent="stuff/body"]
-position = Vector2(70.4167, -7.36167)
+position = Vector2(70.4166, -7.36157)
 rotation = 0.270943
-scale = Vector2(0.999741, 0.999741)
+scale = Vector2(0.999743, 0.999743)
 texture = ExtResource("9_6ktl5")
 centered = false
 
 [node name="UpLeftFingers" type="Sprite2D" parent="stuff/body"]
-position = Vector2(126.073, 63.5432)
-rotation = 0.0573993
-scale = Vector2(0.999661, 0.999661)
+position = Vector2(126.073, 63.5433)
+rotation = 0.0573855
+scale = Vector2(0.999663, 0.999663)
 texture = ExtResource("16_5ekc8")
 centered = false
 
+[node name="HitBox" parent="stuff/body/UpLeftFingers" node_paths=PackedStringArray("father") instance=ExtResource("12_22hb2")]
+monitoring = true
+monitorable = true
+atk = 30.0
+alwaysActive = true
+father = NodePath("../../../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stuff/body/UpLeftFingers/HitBox"]
+position = Vector2(9.7356, 3.21827)
+rotation = 0.71185
+shape = SubResource("RectangleShape2D_kxvjn")
+
 [node name="DownLeftHand" type="Sprite2D" parent="stuff/body"]
-position = Vector2(-26.2981, 77.182)
-rotation = -0.513863
-scale = Vector2(0.999713, 0.999713)
+position = Vector2(-26.2981, 77.1803)
+rotation = -0.513785
+scale = Vector2(0.999699, 0.999699)
 texture = ExtResource("10_7oqhb")
 centered = false
 
 [node name="downLeftUpperArm" type="Sprite2D" parent="stuff/body"]
-position = Vector2(-98.9924, 23.0006)
+position = Vector2(-98.9924, 23.001)
 scale = Vector2(0.999886, 0.999886)
 texture = ExtResource("1_nuykq")
 centered = false
 
 [node name="DownLeftForearm" type="Sprite2D" parent="stuff/body"]
-position = Vector2(-92.6444, 50.8007)
-rotation = 0.108316
-scale = Vector2(0.999789, 0.999789)
+position = Vector2(-92.6437, 50.7999)
+rotation = 0.108315
+scale = Vector2(0.999769, 0.999769)
 texture = ExtResource("2_cietn")
 centered = false
 
@@ -929,7 +960,7 @@ libraries = {
 [node name="ArmR Target" type="CharacterBody2D" parent="IK Targets"]
 position = Vector2(134, 65)
 collision_layer = 0
-collision_mask = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IK Targets/ArmR Target"]
 shape = SubResource("CircleShape2D_cdbgw")
@@ -937,7 +968,7 @@ shape = SubResource("CircleShape2D_cdbgw")
 [node name="ArmL Target" type="CharacterBody2D" parent="IK Targets"]
 position = Vector2(-42, -75)
 collision_layer = 0
-collision_mask = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IK Targets/ArmL Target"]
 shape = SubResource("CircleShape2D_3ghof")
@@ -962,15 +993,15 @@ shape = SubResource("CircleShape2D_c23l3")
 [node name="HeartMimic" type="CharacterBody2D" parent="IK Targets" groups=["enemy"]]
 position = Vector2(3, 42)
 collision_layer = 514
-collision_mask = 512
+collision_mask = 2
 collision_priority = 2.0
 
-[node name="hurtBox" parent="IK Targets/HeartMimic" node_paths=PackedStringArray("healthComp", "parent") instance=ExtResource("18_28l7h")]
+[node name="hurtBox" parent="IK Targets/HeartMimic" node_paths=PackedStringArray("healthComp", "father") instance=ExtResource("18_28l7h")]
 position = Vector2(31, -4)
 collision_layer = 2
 collision_mask = 0
 healthComp = NodePath("../../../HealthComp")
-parent = NodePath("../../..")
+father = NodePath("../../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IK Targets/HeartMimic/hurtBox"]
 position = Vector2(-1, 3.5)
@@ -1028,6 +1059,11 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_65qiw")
 }
+
+[node name="RoomDetector" type="Node" parent="." node_paths=PackedStringArray("hitboxes", "bodies")]
+script = ExtResource("22_vlhte")
+hitboxes = [NodePath("../stuff/body/UpRightHand/HitBox/CollisionShape2D"), NodePath("../stuff/body/UpLeftFingers/HitBox/CollisionShape2D")]
+bodies = [NodePath("../IK Targets/ArmR Target"), NodePath("../IK Targets/ArmL Target"), NodePath("../IK Targets/FootR Target"), NodePath("../IK Targets/FootL Target"), NodePath("../IK Targets/HeartMimic")]
 
 [connection signal="timeout" from="targetRefresh" to="." method="_on_target_refresh_timeout"]
 [connection signal="timeout" from="attackTimer1" to="." method="_on_attack_timer_1_timeout"]

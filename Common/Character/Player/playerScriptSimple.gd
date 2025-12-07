@@ -13,6 +13,9 @@ var state = STATES.IDLE : set = set_state
 var combo = false
 var comboUsed = false
 
+func _ready():
+	GlobalScript.player = self
+	update_collisions()
 func set_state(value):
 	if state == value:
 		if !combo && state != STATES.LIGHT_ATK_1:
@@ -25,6 +28,7 @@ func set_state(value):
 			velocity.x = -300
 			$Marker2D.scale.x = -1.0
 		playAnimWithWeapon("roll")
+		$Marker2D/playerHurtBox/CollisionShape2D.set_deferred("disabled", true)
 	if value == STATES.JUMP:
 		velocity.y -= 300
 		if Input.is_action_pressed("right"):
@@ -92,6 +96,9 @@ func _physics_process(delta):
 				velocity.x = lerp(velocity.x, velocity.x/30, 0.1)
 			if anima.animation == "roll" && anima.frame >= 10:
 				state = STATES.IDLE
+			if anima.animation == "roll" && anima.frame == 7:
+				#state = STATES.IDLE
+				$Marker2D/playerHurtBox/CollisionShape2D.set_deferred("disabled", false)
 			move_and_slide()
 		STATES.JUMP:
 			if velocity.y > 0:
@@ -202,6 +209,13 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("lightAttack"):
 			state = STATES.LIGHT_ATK_1
 
+func update_collisions():
+	for i in 20:
+		set_collision_layer_value(i+1, false)
+		set_collision_mask_value(i+1, false)
+	set_collision_layer_value(GlobalScript.currentLayer+5, true)
+	set_collision_mask_value(GlobalScript.currentLayer+10, true)
+
 func playAnimWithWeapon(animation):
 	wepAnima.sprite_frames = load("res://Items/" + "%s"%GlobalScript.currentWeapon.capitalize() + "/%s.tres"% GlobalScript.currentWeapon)
 	if anima.sprite_frames.has_animation(animation): anima.play(animation)
@@ -212,7 +226,7 @@ func playAnimWithWeapon(animation):
 	else:
 		wepAnima.visible = false
 
-func receive_knockback(weight, direction):
+func receive_self_knockback(weight, direction):
 	combo = true
 	await get_tree().create_timer(0.1).timeout
 	if !comboUsed:
@@ -220,3 +234,7 @@ func receive_knockback(weight, direction):
 		if sign(input.x) != sign(direction*-1):
 			velocity.x += 100.0 * weight * direction
 	comboUsed = false
+
+func receive_knockback(attacker, atkWeight):
+	$hitflashPlayer.play("hitflash")
+	velocity.x += 70.0 * atkWeight * sign(global_position.x - attacker.global_position.x)

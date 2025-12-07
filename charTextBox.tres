@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=9 format=3 uid="uid://c6h47cwl630hd"]
+
+[ext_resource type="PackedScene" uid="uid://cqpb3ie51rwl5" path="res://addons/dialogic/Modules/DefaultLayoutParts/Base_Default/default_layout_base.tscn" id="1_rr5ei"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_nw7rf"]
+[ext_resource type="PackedScene" uid="uid://cy1y14inwkplb" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Portraits/vn_portrait_layer.tscn" id="4_efcjn"]
+[ext_resource type="PackedScene" uid="uid://d7otqet6hue0" path="res://CustomTextboxTest/custom_vn_box.tscn" id="6_iycm1"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="11_fjeas"]
+
+[sub_resource type="Resource" id="Resource_o5uup"]
+script = ExtResource("2_nw7rf")
+scene = ExtResource("1_rr5ei")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_saqd1"]
+script = ExtResource("2_nw7rf")
+scene = ExtResource("4_efcjn")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_s0tyx"]
+script = ExtResource("2_nw7rf")
+scene = ExtResource("6_iycm1")
+overrides = {
+"box_color_custom": "Color(1, 1, 1, 1)",
+"box_color_use_global": "false"
+}
+
+[resource]
+script = ExtResource("11_fjeas")
+name = "charTextBox"
+layer_list = Array[String](["11", "12"])
+layer_info = {
+"": SubResource("Resource_o5uup"),
+"11": SubResource("Resource_saqd1"),
+"12": SubResource("Resource_s0tyx")
+}
+base_overrides = {}
+layers = Array[ExtResource("2_nw7rf")]([])
+metadata/_latest_layer = "12"

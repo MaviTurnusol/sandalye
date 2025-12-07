@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://bkxjehq8jyadd"]
+[gd_scene load_steps=21 format=4 uid="uid://bkxjehq8jyadd"]
 
 [ext_resource type="Texture2D" uid="uid://cg3napou2k6wr" path="res://Stages/Outside/ParallaxBG/zarkSmallBgSky.png" id="1_ow2jv"]
 [ext_resource type="Texture2D" uid="uid://p51mvm3mbebh" path="res://Stages/Outside/ParallaxBG/zarkSmallClouds0.png" id="2_203bd"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://qd3vfdi81drb" path="res://Stages/Outside/testWall.png" id="9_86xkk"]
 [ext_resource type="PackedScene" uid="uid://cwd6s0wcqu4xh" path="res://Common/Character/Player/player.tscn" id="10_ludke"]
 [ext_resource type="PackedScene" uid="uid://dettn18yt1itw" path="res://Enemies/dummy.tscn" id="11_5uer0"]
+[ext_resource type="Shader" uid="uid://dkrnvw1dwdc3" path="res://Enemies/hitflash.tres" id="12_1t50w"]
 [ext_resource type="PackedScene" uid="uid://cqtqoaci2aoo2" path="res://Enemies/Omiyotlakatl/Omiyotlakatl.tscn" id="12_h5ybu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hw55u"]
@@ -67,6 +68,12 @@ size = Vector2(61.5, 115)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evhp3"]
 size = Vector2(326, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5v05t"]
+resource_local_to_scene = true
+shader = ExtResource("12_1t50w")
+shader_parameter/enabled = false
+shader_parameter/ColorParameter = Color(1, 0, 0, 1)
 
 [node name="outside" type="Node2D"]
 
@@ -148,12 +155,12 @@ position = Vector2(323, 263)
 texture = ExtResource("9_86xkk")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 offset_left = 483.0
 offset_top = 203.0
 offset_right = 544.0
 offset_bottom = 318.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 48)
@@ -172,10 +179,9 @@ disabled = true
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(513.25, 212.5)
 shape = SubResource("RectangleShape2D_o1urk")
-disabled = true
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(312, 102)
+position = Vector2(312, 109)
 shape = SubResource("RectangleShape2D_evhp3")
 one_way_collision = true
 
@@ -185,6 +191,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="Player" parent="." instance=ExtResource("10_ludke")]
+material = SubResource("ShaderMaterial_5v05t")
 position = Vector2(200, 267)
 
 [node name="Omiyotlakatl" parent="." instance=ExtResource("12_h5ybu")]

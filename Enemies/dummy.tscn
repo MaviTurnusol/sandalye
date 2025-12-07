@@ -68,11 +68,11 @@ texture = ExtResource("1_ac2rh")
 position = Vector2(-1.5, -23)
 shape = SubResource("RectangleShape2D_flgu8")
 
-[node name="hurtBox" parent="." node_paths=PackedStringArray("healthComp", "parent") instance=ExtResource("2_nyafn")]
+[node name="hurtBox" parent="." node_paths=PackedStringArray("healthComp", "father") instance=ExtResource("2_nyafn")]
 collision_layer = 2
 collision_mask = 0
 healthComp = NodePath("../HealthComp")
-parent = NodePath("..")
+father = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox"]
 position = Vector2(-1.5, -24)

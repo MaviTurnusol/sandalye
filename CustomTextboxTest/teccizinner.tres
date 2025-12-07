@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://b78hjhcq2o6wy"]
+
+[ext_resource type="Texture2D" uid="uid://hjc7yvtytuc6" path="res://CustomTextboxTest/teccizinner.svg" id="1_7mghf"]
+
+[resource]
+texture = ExtResource("1_7mghf")

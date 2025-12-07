@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7ejjtjjedg6s"]
+
+[ext_resource type="Script" path="res://door.gd" id="1_3ta0x"]
+
+[node name="door" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_3ta0x")
+
+[node name="cooldown" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

@@ -1,26 +1,91 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwd6s0wcqu4xh"]
+[gd_scene load_steps=14 format=3 uid="uid://cwd6s0wcqu4xh"]
 
 [ext_resource type="Script" path="res://Common/Character/Player/playerScriptSimple.gd" id="1_6di5r"]
+[ext_resource type="Shader" uid="uid://dkrnvw1dwdc3" path="res://Enemies/hitflash.tres" id="1_jsk8l"]
 [ext_resource type="SpriteFrames" uid="uid://wm3dp8pqqpaq" path="res://Common/Character/Player/Animations/Combined/player.tres" id="2_gimvo"]
 [ext_resource type="SpriteFrames" uid="uid://b78xlm0yjdfe0" path="res://Items/Knife/knife.tres" id="3_kyx7s"]
-[ext_resource type="PackedScene" uid="uid://un0mpc5c3l8e" path="res://Common/Components/hurt_box.tscn" id="11_xmirh"]
+[ext_resource type="Script" path="res://Common/Character/Player/player_hurt_box.gd" id="6_kka0i"]
 [ext_resource type="PackedScene" uid="uid://dqvwyvm4o43j1" path="res://Common/Components/hit_box.tscn" id="12_agtre"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_10kfa"]
-light_mode = 1
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bqu5s"]
+resource_local_to_scene = true
+shader = ExtResource("1_jsk8l")
+shader_parameter/enabled = false
+shader_parameter/ColorParameter = Color(1, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hq7m"]
 size = Vector2(9, 78)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yukml"]
-size = Vector2(21, 62)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lxap7"]
 size = Vector2(52, 16)
 
-[node name="Player" type="CharacterBody2D"]
-material = SubResource("CanvasItemMaterial_10kfa")
-collision_layer = 0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yukml"]
+size = Vector2(21, 62)
+
+[sub_resource type="Animation" id="Animation_5go0i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_aeup0"]
+resource_name = "hitflash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker2D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ca8j3"]
+_data = {
+"RESET": SubResource("Animation_5go0i"),
+"hitflash": SubResource("Animation_aeup0")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+material = SubResource("ShaderMaterial_bqu5s")
+collision_layer = 16
 collision_mask = 512
 script = ExtResource("1_6di5r")
 
@@ -29,24 +94,21 @@ position = Vector2(0.5, 5)
 shape = SubResource("RectangleShape2D_4hq7m")
 
 [node name="Marker2D" type="Marker2D" parent="."]
+use_parent_material = true
 
 [node name="anima" type="AnimatedSprite2D" parent="Marker2D"]
+use_parent_material = true
 sprite_frames = ExtResource("2_gimvo")
 animation = &"stab"
 frame = 7
 frame_progress = 1.0
 
 [node name="weapon" type="AnimatedSprite2D" parent="Marker2D"]
+use_parent_material = true
 sprite_frames = ExtResource("3_kyx7s")
 animation = &"runRecovery"
 frame = 2
 frame_progress = 1.0
-
-[node name="hurtBox" parent="Marker2D" instance=ExtResource("11_xmirh")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/hurtBox"]
-position = Vector2(0.5, 7)
-shape = SubResource("RectangleShape2D_yukml")
 
 [node name="stabHitbox" parent="Marker2D" node_paths=PackedStringArray("father") instance=ExtResource("12_agtre")]
 position = Vector2(32, 4)
@@ -74,7 +136,27 @@ collision_mask = 512
 position = Vector2(14, -94)
 collision_mask = 512
 
+[node name="playerHurtBox" type="Area2D" parent="Marker2D" node_paths=PackedStringArray("father")]
+script = ExtResource("6_kka0i")
+father = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/playerHurtBox"]
+position = Vector2(0.5, 7)
+shape = SubResource("RectangleShape2D_yukml")
+
+[node name="invTimer" type="Timer" parent="Marker2D/playerHurtBox"]
+wait_time = 0.8
+one_shot = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -87)
+offset = Vector2(0, -55)
+zoom = Vector2(3, 3)
 process_callback = 0
 position_smoothing_enabled = true
+
+[node name="hitflashPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ca8j3")
+}
+
+[connection signal="timeout" from="Marker2D/playerHurtBox/invTimer" to="Marker2D/playerHurtBox" method="_on_inv_timer_timeout"]

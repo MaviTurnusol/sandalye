@@ -1,6 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://c5iwa1nb2j1r5"]
+[gd_scene load_steps=24 format=3 uid="uid://c5iwa1nb2j1r5"]
 
+[ext_resource type="PackedScene" uid="uid://d1g63ob04rg8m" path="res://Common/room.tscn" id="1_2ujqo"]
 [ext_resource type="Texture2D" uid="uid://056kipi7wsds" path="res://Stages/koridor2.png" id="1_37rpk"]
+[ext_resource type="Script" path="res://Stages/world_scene_test_2.gd" id="1_iflu3"]
 [ext_resource type="Texture2D" uid="uid://cprgwi6yaca2a" path="res://Stages/koridor2normalmap.png" id="2_bxdyj"]
 [ext_resource type="PackedScene" uid="uid://cwd6s0wcqu4xh" path="res://Common/Character/Player/player.tscn" id="2_xtf5v"]
 [ext_resource type="Texture2D" uid="uid://bb3sqanhcnlvw" path="res://Stages/kapi.png" id="3_tht7j"]
@@ -11,9 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://bmhmvayqyuhek" path="res://Stages/sandalye3.png" id="9_5f76x"]
 [ext_resource type="Texture2D" uid="uid://dqg4r3yiermxv" path="res://Stages/xipe.png" id="10_ijolq"]
 [ext_resource type="Texture2D" uid="uid://ccp86g5ll8rfb" path="res://Stages/sandalye.png" id="10_pjoua"]
+[ext_resource type="Shader" uid="uid://dkrnvw1dwdc3" path="res://Enemies/hitflash.tres" id="11_fn40p"]
 [ext_resource type="PackedScene" uid="uid://wwt66k1dxhmk" path="res://Common/HUD/hud.tscn" id="12_1ml3l"]
 [ext_resource type="PackedScene" uid="uid://cqtqoaci2aoo2" path="res://Enemies/Omiyotlakatl/Omiyotlakatl.tscn" id="13_pp6aq"]
 [ext_resource type="Texture2D" uid="uid://b67hc8rucdh6x" path="res://Stages/WhatsApp Image 2025-05-24 at 9.33.11 AM.jpeg" id="14_10xu6"]
+[ext_resource type="PackedScene" uid="uid://c7ejjtjjedg6s" path="res://Common/door.tscn" id="17_hq42l"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_5uiqq"]
 diffuse_texture = ExtResource("1_37rpk")
@@ -22,65 +26,80 @@ normal_texture = ExtResource("2_bxdyj")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ypl"]
 size = Vector2(1920, 25)
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gv6yw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m12r8"]
+resource_local_to_scene = true
+shader = ExtResource("11_fn40p")
+shader_parameter/enabled = false
+shader_parameter/ColorParameter = Color(1, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opw4a"]
+size = Vector2(381, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bxvk"]
+size = Vector2(154, 146)
 
 [node name="worldSceneTest2" type="Node2D"]
+script = ExtResource("1_iflu3")
 
-[node name="WhatsAppImage2025-05-24At9_33_11Am" type="Sprite2D" parent="."]
+[node name="halls" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_2ujqo")]
+collider = NodePath("StaticBody2D")
+
+[node name="WhatsAppImage2025-05-24At9_33_11Am" type="Sprite2D" parent="halls"]
+visible = false
 position = Vector2(1491, 153)
 texture = ExtResource("14_10xu6")
 
-[node name="Koridor4" type="Sprite2D" parent="."]
+[node name="Koridor4" type="Sprite2D" parent="halls"]
 position = Vector2(960, 180)
 texture = SubResource("CanvasTexture_5uiqq")
 
-[node name="Koridor2" type="Sprite2D" parent="."]
+[node name="Koridor2" type="Sprite2D" parent="halls"]
 position = Vector2(320, 180)
 texture = SubResource("CanvasTexture_5uiqq")
 
-[node name="Koridor3" type="Sprite2D" parent="."]
+[node name="Koridor3" type="Sprite2D" parent="halls"]
 position = Vector2(-320, 180)
 texture = SubResource("CanvasTexture_5uiqq")
 
-[node name="Kapi" type="Sprite2D" parent="."]
+[node name="Kapi" type="Sprite2D" parent="halls"]
 position = Vector2(364, 124)
 texture = ExtResource("3_tht7j")
 centered = false
 
-[node name="Kapi2" type="Sprite2D" parent="."]
+[node name="Kapi2" type="Sprite2D" parent="halls"]
 position = Vector2(124, 201)
 texture = ExtResource("7_l237w")
 
-[node name="Sandalye2" type="Sprite2D" parent="."]
+[node name="Sandalye2" type="Sprite2D" parent="halls"]
 visible = false
 position = Vector2(17, 251)
 texture = ExtResource("8_2mfu6")
 
-[node name="Sandalye3" type="Sprite2D" parent="."]
+[node name="Sandalye3" type="Sprite2D" parent="halls"]
 visible = false
 position = Vector2(-19, 252)
 texture = ExtResource("9_5f76x")
 
-[node name="Sandalye" type="Sprite2D" parent="."]
+[node name="Sandalye" type="Sprite2D" parent="halls"]
 visible = false
 position = Vector2(622, 251)
 texture = ExtResource("10_pjoua")
 
-[node name="Xipe" type="Sprite2D" parent="."]
+[node name="Xipe" type="Sprite2D" parent="halls"]
 position = Vector2(236, 207)
 texture = ExtResource("10_ijolq")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="halls"]
 position = Vector2(0, 14)
-collision_layer = 512
-collision_mask = 512
+collision_layer = 2
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="halls/StaticBody2D"]
 position = Vector2(321, 276.5)
 shape = SubResource("RectangleShape2D_f1ypl")
 
 [node name="Player" parent="." instance=ExtResource("2_xtf5v")]
-material = SubResource("CanvasItemMaterial_gv6yw")
+material = SubResource("ShaderMaterial_m12r8")
 position = Vector2(-6, 229)
 
 [node name="PointLight2D" type="PointLight2D" parent="Player"]
@@ -120,3 +139,36 @@ height = 4.0
 
 [node name="Omiyotlakatl" parent="." instance=ExtResource("13_pp6aq")]
 position = Vector2(-531, 198)
+
+[node name="room" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_2ujqo")]
+layer = -1
+collider = NodePath("collider")
+
+[node name="ColorRect" type="ColorRect" parent="room"]
+offset_left = -68.0
+offset_top = 268.0
+offset_right = 313.0
+offset_bottom = 308.0
+color = Color(0, 0, 0, 1)
+
+[node name="collider" type="StaticBody2D" parent="room"]
+position = Vector2(124, 268)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="room/collider"]
+position = Vector2(-1.5, 22.5)
+shape = SubResource("RectangleShape2D_opw4a")
+
+[node name="Kapi2" type="Sprite2D" parent="room"]
+position = Vector2(124, 201)
+texture = ExtResource("7_l237w")
+
+[node name="door" parent="." node_paths=PackedStringArray("room1", "room2") instance=ExtResource("17_hq42l")]
+position = Vector2(124, 207)
+room1 = NodePath("../halls")
+room2 = NodePath("../room")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door"]
+position = Vector2(-2, -1)
+shape = SubResource("RectangleShape2D_2bxvk")
