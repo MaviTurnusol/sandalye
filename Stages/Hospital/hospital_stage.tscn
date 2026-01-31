@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnuddgfp0s51y"]
+[gd_scene load_steps=14 format=3 uid="uid://cnuddgfp0s51y"]
 
 [ext_resource type="Texture2D" uid="uid://gfby42mbf1a" path="res://Stages/Hospital/koridor5w1.png" id="1_53p24"]
 [ext_resource type="Texture2D" uid="uid://b8cvicemqj5ek" path="res://Stages/Hospital/koridor5w1_n.png" id="2_ccdf0"]
@@ -7,15 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://br45swygqlpac" path="res://Stages/Hospital/led.tscn" id="5_hurmp"]
 [ext_resource type="Script" path="res://Stages/Hospital/vignette.gd" id="6_gujpw"]
 [ext_resource type="Shader" path="res://Stages/Hospital/vignette.gdshader" id="6_li2jn"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_jlnyq"]
-diffuse_texture = ExtResource("1_53p24")
-normal_texture = ExtResource("2_ccdf0")
-specular_texture = ExtResource("1_53p24")
-specular_shininess = 0.1
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryvmy"]
-size = Vector2(2353, 20)
+[ext_resource type="Script" path="res://Common/room.gd" id="12_5e71n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ej86n"]
 resource_local_to_scene = true
@@ -43,32 +35,16 @@ shader_parameter/intensity = 3.0
 shader_parameter/contrast = 1.2
 shader_parameter/vignette_color = Color(0, 0, 0, 1)
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_jlnyq"]
+diffuse_texture = ExtResource("1_53p24")
+normal_texture = ExtResource("2_ccdf0")
+specular_texture = ExtResource("1_53p24")
+specular_shininess = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryvmy"]
+size = Vector2(2353, 20)
+
 [node name="HospitalStage" type="Node2D"]
-
-[node name="bg" type="Node2D" parent="."]
-modulate = Color(0.1, 0.1, 0.1, 1)
-self_modulate = Color(0.2, 0.2, 0.2, 1)
-
-[node name="ColorRect" type="ColorRect" parent="bg"]
-offset_left = -1068.0
-offset_top = -277.0
-offset_right = 1142.0
-offset_bottom = 607.0
-color = Color(0.0627451, 0.0627451, 0.0627451, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="bg"]
-light_mask = 2
-position = Vector2(235, 216)
-texture = SubResource("CanvasTexture_jlnyq")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(0, 48)
-collision_layer = 512
-collision_mask = 512
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(624.5, 280)
-shape = SubResource("RectangleShape2D_ryvmy")
 
 [node name="Player" parent="." instance=ExtResource("2_yy8yt")]
 modulate = Color(0.2, 0.2, 0.2, 1)
@@ -79,14 +55,8 @@ position = Vector2(-260, 213)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_174de")
 
-[node name="LedOn" parent="." instance=ExtResource("5_hurmp")]
-position = Vector2(-296, 147)
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.544974, 0.544974, 0.544974, 1)
-
-[node name="LedOn2" parent="." instance=ExtResource("5_hurmp")]
-position = Vector2(287, 145)
 
 [node name="vignette" type="CanvasLayer" parent="."]
 script = ExtResource("6_gujpw")
@@ -99,3 +69,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
+
+[node name="KoridorRoom" type="Node2D" parent="." node_paths=PackedStringArray("collider")]
+script = ExtResource("12_5e71n")
+collider = NodePath("FloorCollider")
+
+[node name="bg" type="Node2D" parent="KoridorRoom"]
+modulate = Color(0.1, 0.1, 0.1, 1)
+self_modulate = Color(0.2, 0.2, 0.2, 1)
+z_index = -1
+
+[node name="ColorRect" type="ColorRect" parent="KoridorRoom/bg"]
+offset_left = -1068.0
+offset_top = -277.0
+offset_right = 1142.0
+offset_bottom = 607.0
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="KoridorRoom/bg"]
+light_mask = 2
+position = Vector2(235, 216)
+texture = SubResource("CanvasTexture_jlnyq")
+
+[node name="FloorCollider" type="StaticBody2D" parent="KoridorRoom"]
+position = Vector2(0, 48)
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KoridorRoom/FloorCollider"]
+position = Vector2(624.5, 280)
+shape = SubResource("RectangleShape2D_ryvmy")
+
+[node name="LedOn" parent="KoridorRoom" instance=ExtResource("5_hurmp")]
+position = Vector2(-296, 147)
+
+[node name="LedOn2" parent="KoridorRoom" instance=ExtResource("5_hurmp")]
+position = Vector2(287, 145)

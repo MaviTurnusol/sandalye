@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=4 uid="uid://bq721nmqm2i2t"]
+
+[ext_resource type="Script" path="res://MADDIE/VentRoom.gd" id="1_ltm3l"]
+[ext_resource type="Texture2D" uid="uid://bebtsmnkxqmh1" path="res://MADDIE/Vent.png" id="2_qisxq"]
+[ext_resource type="Script" path="res://MADDIE/Vent.gd" id="3_hd33y"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h85cd"]
+texture = ExtResource("2_qisxq")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5p14i"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_h85cd")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrga"]
+size = Vector2(64, 64)
+
+[node name="MaddieTestTheVentsScene" type="Node2D"]
+
+[node name="Vents" type="Node2D" parent="."]
+script = ExtResource("1_ltm3l")
+
+[node name="VentSpaces" type="TileMapLayer" parent="Vents"]
+self_modulate = Color(0.241156, 0.241156, 0.241156, 1)
+tile_map_data = PackedByteArray("AAAFAAkAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAkAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_5p14i")
+
+[node name="VentryPoint2" type="Area2D" parent="." node_paths=PackedStringArray("OwnRoom", "VentRoom")]
+z_index = 1
+position = Vector2(400, 303)
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("3_hd33y")
+OwnRoom = NodePath("")
+VentRoom = NodePath("")
+
+[node name="cooldown" type="Timer" parent="VentryPoint2"]
+wait_time = 1.2
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="VentryPoint2"]
+texture = ExtResource("2_qisxq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VentryPoint2"]
+shape = SubResource("RectangleShape2D_ekrga")
+
+[node name="InteractPrompt" type="Label" parent="VentryPoint2"]
+offset_left = -3.0
+offset_top = -36.0
+offset_right = 2.0
+offset_bottom = -13.0
+text = "!"
+horizontal_alignment = 1
+vertical_alignment = 1

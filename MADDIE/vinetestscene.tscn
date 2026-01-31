@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://doaig1lpv4kev"]
+
+[ext_resource type="Script" path="res://MADDIE/VineTest.gd" id="1_xpy8t"]
+[ext_resource type="Texture2D" uid="uid://bco4t1ey0fkpm" path="res://addons/dialogic/Modules/Condition/icon.svg" id="2_ag822"]
+[ext_resource type="Script" path="res://MADDIE/FlowerHead.gd" id="3_0mfqa"]
+
+[node name="Vinetestscene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 25.0
+default_color = Color(5.34251e-06, 0.683324, 0.512861, 1)
+script = ExtResource("1_xpy8t")
+LengthInterval = 2
+RotationSpeed = 50.0
+
+[node name="FlowerHEad" type="Sprite2D" parent="Line2D"]
+texture = ExtResource("2_ag822")
+script = ExtResource("3_0mfqa")
