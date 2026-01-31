@@ -82,7 +82,10 @@ func _process(delta):
 func OnIntervalChanged(OldInterval, NewInterval):
 	if(OldInterval < NewInterval):
 		#add_point(Vector2.RIGHT * CurrentLength)
-		add_point(get_point_position(points.size()-1)+(Vector2.RIGHT * LengthInterval).rotated(deg_to_rad(CurrentRotationDegrees)))
+		if(points.size()!=0):
+			add_point(get_point_position(points.size()-1)+(Vector2.RIGHT * LengthInterval).rotated(deg_to_rad(CurrentRotationDegrees)))
+		else:
+			add_point(Vector2.ZERO+(Vector2.RIGHT * LengthInterval).rotated(deg_to_rad(CurrentRotationDegrees)))
 		RotationAtIntervals.append(RotationDirection)
 	elif(OldInterval > NewInterval):
 		remove_point(points.size()-1)
