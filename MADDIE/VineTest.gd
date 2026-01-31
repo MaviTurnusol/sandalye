@@ -61,7 +61,8 @@ func _process(delta):
 				RotationDirection = RotationStates.RotateClockwise
 				CurrentRotationDegrees += (RotationDirection * RotationSpeed) * delta 
 				pass
-			
+			else:
+				RotationDirection = RotationStates.Immobile
 			pass
 		GrowthStates.Delongating:
 			CurrentLength -= GrowthSpeed*delta
