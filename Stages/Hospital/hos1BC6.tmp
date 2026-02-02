@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cnuddgfp0s51y"]
+[gd_scene load_steps=18 format=3 uid="uid://cnuddgfp0s51y"]
 
 [ext_resource type="Texture2D" uid="uid://gfby42mbf1a" path="res://Stages/Hospital/koridor5w1.png" id="1_53p24"]
 [ext_resource type="Texture2D" uid="uid://b8cvicemqj5ek" path="res://Stages/Hospital/koridor5w1_n.png" id="2_ccdf0"]
@@ -7,7 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://br45swygqlpac" path="res://Stages/Hospital/led.tscn" id="5_hurmp"]
 [ext_resource type="Script" path="res://Stages/Hospital/vignette.gd" id="6_gujpw"]
 [ext_resource type="Shader" path="res://Stages/Hospital/vignette.gdshader" id="6_li2jn"]
-[ext_resource type="PackedScene" uid="uid://dlic7mcwubbkw" path="res://MADDIE/VentryPoint.tscn" id="9_rkbuc"]
+[ext_resource type="Script" path="res://MADDIE/Vent.gd" id="10_b7i6j"]
+[ext_resource type="PackedScene" uid="uid://dxddd3dlckwx1" path="res://MADDIE/VentVine.tscn" id="11_1um3l"]
+[ext_resource type="Texture2D" uid="uid://bebtsmnkxqmh1" path="res://MADDIE/Vent.png" id="11_aya6a"]
 [ext_resource type="Script" path="res://Common/room.gd" id="12_5e71n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ej86n"]
@@ -44,6 +46,9 @@ specular_shininess = 0.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryvmy"]
 size = Vector2(2353, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_foqip"]
+size = Vector2(64, 64)
 
 [node name="HospitalStage" type="Node2D"]
 
@@ -101,28 +106,60 @@ collision_mask = 512
 position = Vector2(624.5, 280)
 shape = SubResource("RectangleShape2D_ryvmy")
 
-[node name="CeilingCollider" type="StaticBody2D" parent="KoridorRoom"]
-position = Vector2(-1, -119)
-collision_layer = 512
-collision_mask = 512
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KoridorRoom/CeilingCollider"]
-position = Vector2(624.5, 280)
-shape = SubResource("RectangleShape2D_ryvmy")
-
 [node name="LedOn" parent="KoridorRoom" instance=ExtResource("5_hurmp")]
 position = Vector2(-296, 147)
 
 [node name="LedOn2" parent="KoridorRoom" instance=ExtResource("5_hurmp")]
 position = Vector2(287, 145)
 
-[node name="VentryPoint2" parent="KoridorRoom" instance=ExtResource("9_rkbuc")]
+[node name="VentryPoint2" type="Area2D" parent="KoridorRoom"]
+z_index = -1
+position = Vector2(226, 290)
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("10_b7i6j")
 
-[node name="VentryPoint3" parent="KoridorRoom" instance=ExtResource("9_rkbuc")]
-position = Vector2(386, 290)
+[node name="Sprite2D" type="Sprite2D" parent="KoridorRoom/VentryPoint2"]
+texture = ExtResource("11_aya6a")
 
-[node name="VentryPoint4" parent="KoridorRoom" instance=ExtResource("9_rkbuc")]
-position = Vector2(303, 119)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KoridorRoom/VentryPoint2"]
+shape = SubResource("RectangleShape2D_foqip")
 
-[node name="VentryPoint5" parent="KoridorRoom" instance=ExtResource("9_rkbuc")]
-position = Vector2(-111, 290)
+[node name="InteractPrompt" type="Label" parent="KoridorRoom/VentryPoint2"]
+offset_left = -3.0
+offset_top = -36.0
+offset_right = 2.0
+offset_bottom = -13.0
+text = "!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VentVine" parent="KoridorRoom/VentryPoint2" instance=ExtResource("11_1um3l")]
+MaxLength = null
+GrowthSpeed = null
+
+[node name="VentryPoint3" type="Area2D" parent="KoridorRoom" groups=["ventopening"]]
+z_index = -1
+position = Vector2(481, 290)
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("10_b7i6j")
+
+[node name="Sprite2D" type="Sprite2D" parent="KoridorRoom/VentryPoint3"]
+texture = ExtResource("11_aya6a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KoridorRoom/VentryPoint3"]
+shape = SubResource("RectangleShape2D_foqip")
+
+[node name="InteractPrompt" type="Label" parent="KoridorRoom/VentryPoint3"]
+offset_left = -3.0
+offset_top = -36.0
+offset_right = 2.0
+offset_bottom = -13.0
+text = "!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VentVine" parent="KoridorRoom/VentryPoint3" instance=ExtResource("11_1um3l")]
+MaxLength = null
+GrowthSpeed = null

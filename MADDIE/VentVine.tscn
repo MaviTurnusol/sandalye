@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://dxddd3dlckwx1"]
+
+[ext_resource type="Script" path="res://MADDIE/Vine.gd" id="1_052vr"]
+[ext_resource type="Script" path="res://MADDIE/FlowerHead.gd" id="3_tnotg"]
+
+[sub_resource type="Curve" id="Curve_te40n"]
+max_value = 1.5
+_data = [Vector2(0, 1.5), 0.0, 0.0, 0, 0, Vector2(0.543147, 1.18681), 0.0, 0.0, 0, 0, Vector2(1, 0.131868), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_lwrtp"]
+offsets = PackedFloat32Array(0.0254777, 1)
+colors = PackedColorArray(3.30899e-07, 0.273974, 0.175136, 1, 0, 0.682353, 0.513726, 1)
+
+[sub_resource type="Gradient" id="Gradient_814tn"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_eeqlh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vcqbm"]
+width = 24
+height = 24
+color_ramp = SubResource("Gradient_814tn")
+noise = SubResource("FastNoiseLite_eeqlh")
+
+[sub_resource type="Gradient" id="Gradient_llmie"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x38og"]
+gradient = SubResource("Gradient_llmie")
+width = 7
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j5pek"]
+radius = 4.0
+
+[node name="VentVine" type="Line2D"]
+width = 5.0
+width_curve = SubResource("Curve_te40n")
+default_color = Color(5.34251e-06, 0.683324, 0.512861, 1)
+gradient = SubResource("Gradient_lwrtp")
+texture = SubResource("NoiseTexture2D_vcqbm")
+texture_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("1_052vr")
+LengthInterval = 2
+RotationSpeed = 250.0
+
+[node name="FlowerHEad2" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture1D_x38og")
+script = ExtResource("3_tnotg")
+
+[node name="Area2D" type="Area2D" parent="FlowerHEad2"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlowerHEad2/Area2D"]
+shape = SubResource("CircleShape2D_j5pek")

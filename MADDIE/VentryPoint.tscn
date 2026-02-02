@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlic7mcwubbkw"]
+
+[ext_resource type="Script" path="res://MADDIE/Vent.gd" id="1_om8yf"]
+[ext_resource type="Texture2D" uid="uid://bebtsmnkxqmh1" path="res://MADDIE/Vent.png" id="2_5h74u"]
+[ext_resource type="PackedScene" uid="uid://dxddd3dlckwx1" path="res://MADDIE/VentVine.tscn" id="3_rdwdg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_foqip"]
+size = Vector2(64, 64)
+
+[node name="VentryPoint2" type="Area2D" groups=["ventopening"]]
+z_index = -1
+position = Vector2(226, 290)
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_om8yf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5h74u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_foqip")
+
+[node name="InteractPrompt" type="Label" parent="."]
+offset_left = -3.0
+offset_top = -36.0
+offset_right = 2.0
+offset_bottom = -13.0
+text = "!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VentVine" parent="." instance=ExtResource("3_rdwdg")]

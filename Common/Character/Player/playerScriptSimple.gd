@@ -3,7 +3,8 @@ extends CharacterBody2D
 var speed = 130.0
 var jumpvel = -400.0
 
-enum STATES {WALK, RUN, ROLL, IDLE, JUMP, FALL, FALL_RECOVERY, RUN_RECOVERY, WALK_RECOVERY, LIGHT_ATK_1, ON_LEDGE, LEDGE_CLIMBING}
+enum STATES {WALK, RUN, ROLL, IDLE, JUMP, FALL, FALL_RECOVERY, RUN_RECOVERY, WALK_RECOVERY, LIGHT_ATK_1, ON_LEDGE, LEDGE_CLIMBING,
+VENTING,LEAVEVENT}
 var state = STATES.IDLE : set = set_state
 
 @onready var anima = $Marker2D/anima
@@ -17,6 +18,10 @@ func _ready():
 	GlobalScript.player = self
 	update_collisions()
 func set_state(value):
+	
+	if(state == STATES.VENTING && value != STATES.LEAVEVENT):
+		return
+	
 	if state == value:
 		if !combo && state != STATES.LIGHT_ATK_1:
 			return
@@ -72,7 +77,24 @@ func set_state(value):
 		state = STATES.WALK_RECOVERY
 		playAnimWithWeapon("walkRecovery")
 		return
-
+	
+	if(value == STATES.VENTING): #Happens only when entering Vents
+		#Play Enter Vent Anim
+		if(anima.animation!="wallFuck"):
+			anima.play("wallFuck")
+		pass
+	#maddie
+	if(state == STATES.VENTING):
+		if(value == STATES.LEAVEVENT):
+			#PLAY LEAVE VENT ANIM
+			
+			#TEMP
+			state = STATES.IDLE
+			
+			return
+		#else:
+			#return #STOP OTHER STATES FROM HAPPENING WHILE VENTING
+	
 	state = value
 	
 func _physics_process(delta):
@@ -164,6 +186,9 @@ func _physics_process(delta):
 				if anima.animation == "stab" && anima.frame in [5, 6, 7]:
 					state = STATES.ROLL
 			move_and_slide()
+		STATES.VENTING: #MADDIE
+			velocity = Vector2.ZERO
+			move_and_slide()
 	
 	if not is_on_floor():
 		if state not in [STATES.ON_LEDGE, STATES.LEDGE_CLIMBING]:
@@ -176,7 +201,7 @@ func _physics_process(delta):
 		$Marker2D/stabHitbox.activate(1, 10)
 
 	var input = Vector2(Input.get_action_strength("right") - Input.get_action_strength("left"), 0)
-	if state not in [STATES.ROLL, STATES.JUMP, STATES.FALL, STATES.FALL_RECOVERY, STATES.RUN_RECOVERY, STATES.WALK_RECOVERY, STATES.LIGHT_ATK_1, STATES.LEDGE_CLIMBING, STATES.ON_LEDGE]:
+	if state not in [STATES.ROLL, STATES.JUMP, STATES.FALL, STATES.FALL_RECOVERY, STATES.RUN_RECOVERY, STATES.WALK_RECOVERY, STATES.LIGHT_ATK_1, STATES.LEDGE_CLIMBING, STATES.ON_LEDGE, STATES.VENTING]:
 		if !is_on_floor() && velocity.y > 0:
 			state = STATES.FALL
 		if input.x != 0:
@@ -238,3 +263,12 @@ func receive_self_knockback(weight, direction):
 func receive_knockback(attacker, atkWeight):
 	$hitflashPlayer.play("hitflash")
 	velocity.x += 70.0 * atkWeight * sign(global_position.x - attacker.global_position.x)
+
+
+#MADDIE
+func StartVenting():
+	state = STATES.VENTING
+func StopVenting(WhereExit): #VECTOR2 in global
+	if(WhereExit != null):
+		global_position = WhereExit - Vector2(0,($Marker2D/anima.sprite_frames.get_frame_texture($Marker2D/anima.animation,$Marker2D/anima.frame).get_height()/6))
+	state = STATES.LEAVEVENT

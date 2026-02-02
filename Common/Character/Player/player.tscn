@@ -99,9 +99,7 @@ use_parent_material = true
 [node name="anima" type="AnimatedSprite2D" parent="Marker2D"]
 use_parent_material = true
 sprite_frames = ExtResource("2_gimvo")
-animation = &"stab"
-frame = 7
-frame_progress = 1.0
+animation = &"wallFuck"
 
 [node name="weapon" type="AnimatedSprite2D" parent="Marker2D"]
 use_parent_material = true
