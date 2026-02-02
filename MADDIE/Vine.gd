@@ -124,12 +124,12 @@ func EMERGENCYRECALL():
 	RecallTween.set_parallel(true)
 	RecallTween.set_trans(Tween.TRANS_LINEAR)
 	RecallTween.set_ease(Tween.EASE_IN_OUT)
-	RecallTween.tween_property(self,"self_modulate",Color.BLACK,0.5)
+	RecallTween.tween_property(self,"modulate",Color.BLACK,0.5)
 	RecallTween.tween_method(RecallMethod,points.size(),0,((CurrentLength/MaxLength)*1.5)+1)
 	get_parent().EmergencyExit()
 	await RecallTween.finished
 	GrowthDirection = GrowthStates.Stationary
-	self_modulate = Color.WHITE #Color("00ae83")
+	modulate = Color.WHITE #Color("00ae83")
 	get_parent().ExitVent()
 	RotationAtIntervals.clear()
 	points.clear()
