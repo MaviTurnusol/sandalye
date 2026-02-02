@@ -37,7 +37,7 @@ func _input(event):
 				onCooldown = true
 				StartCoolDown()
 				print("YAY!")
-		if(event.is_action_pressed("return_to_body")):
+		if(event.is_action_pressed("return_to_body")&&OwnVentVine.visible&&OwnVentVine.GrowthDirection!=OwnVentVine.GrowthStates.Recalling):
 			OwnVentVine.EMERGENCYRECALL()
 		
 
