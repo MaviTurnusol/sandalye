@@ -46,17 +46,17 @@ LengthInterval = 2
 GrowthSpeed = 100.0
 RotationSpeed = 250.0
 
-[node name="FlowerHEad2" type="Sprite2D" parent="."]
+[node name="FlowerHead" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture1D_x38og")
 script = ExtResource("3_tnotg")
 
-[node name="Area2D" type="Area2D" parent="FlowerHEad2"]
+[node name="Area2D" type="Area2D" parent="FlowerHead"]
 collision_layer = 16
-collision_mask = 16
+collision_mask = 48
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FlowerHEad2/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlowerHead/Area2D"]
 shape = SubResource("CircleShape2D_j5pek")
 
-[node name="Camera2D" type="Camera2D" parent="FlowerHEad2"]
+[node name="Camera2D" type="Camera2D" parent="FlowerHead"]
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true

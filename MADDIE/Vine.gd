@@ -10,6 +10,8 @@ var CurrentLength : float = 0
 
 var DefRotation : float
 
+@onready var FlowerHead = $FlowerHead
+
 var CurrentInterval : int = 0:
 	get:
 		return CurrentInterval
@@ -47,7 +49,7 @@ func _process(delta):
 			RotationDirection = RotationStates.Immobile
 			if(Input.is_action_just_pressed("down")):
 				GrowthDirection = GrowthStates.Delongating
-			if(Input.is_action_just_pressed("up")):
+			if(Input.is_action_just_pressed("up") && FlowerHead.CanGoForward):
 				GrowthDirection = GrowthStates.Elongating
 			
 		if(Input.is_action_just_released("up") || Input.is_action_just_released("down")):

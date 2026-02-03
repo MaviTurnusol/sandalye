@@ -4,6 +4,8 @@ extends Sprite2D
 @onready var CollisionDetector : Area2D = $Area2D
 @export var VentZoom : Vector2 = Vector2(5,5)
 
+var CanGoForward : bool = true
+
 func _ready() -> void:
 	CollisionDetector.connect("area_entered",AreaDetected)
 
@@ -23,6 +25,11 @@ func _process(delta):
 	if(LineParent.visible):
 		if(LineParent.GrowthDirection != LineParent.GrowthStates.Recalling):
 			get_tree().get_first_node_in_group("player").get_node("Camera2D").position = position + Vector2(0,48)
+	
+	CanGoForward = CollisionDetector.has_overlapping_bodies()
+	if(!CanGoForward && LineParent.GrowthDirection == LineParent.GrowthStates.Elongating):
+		LineParent.GrowthDirection = LineParent.GrowthStates.Stationary
+		pass
 
 func TweenCameraToPosition():
 	##if($Camera2D.enabled == false):
