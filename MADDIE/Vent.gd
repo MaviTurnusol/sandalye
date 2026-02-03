@@ -46,6 +46,7 @@ func _input(event):
 				onCooldown = true
 				StartCoolDown()
 				print("YAY!")
+				get_tree().get_first_node_in_group("player").velocity = Vector2.ZERO
 		if(event.is_action_pressed("return_to_body")&&OwnVentVine.visible&&OwnVentVine.GrowthDirection!=OwnVentVine.GrowthStates.Recalling):
 			OwnVentVine.EMERGENCYRECALL()
 		

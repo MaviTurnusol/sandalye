@@ -19,7 +19,8 @@ func _process(delta):
 	rotation = deg_to_rad(LineParent.CurrentRotationDegrees)
 	if(LineParent.points.size()!=0):
 		position = LineParent.get_point_position(LineParent.points.size()-1)
-		
+	
+	if(LineParent.visible):
 		if(LineParent.GrowthDirection != LineParent.GrowthStates.Recalling):
 			get_tree().get_first_node_in_group("player").get_node("Camera2D").position = position + Vector2(0,48)
 
@@ -33,11 +34,12 @@ func TweenCameraToPosition():
 	TweenOut.tween_property(get_tree().get_first_node_in_group("player").get_node("Camera2D"),"zoom",VentZoom,1)
 
 func UnCamera(AtNewPos : bool):
-	if(AtNewPos):
-		get_tree().get_first_node_in_group("player").get_node("Camera2D").position = Vector2(0,0)
 	var TweenOut = get_tree().create_tween()
 	TweenOut.set_parallel(true)
 	TweenOut.tween_property(get_tree().get_first_node_in_group("player").get_node("Camera2D"),"zoom",Vector2(3,3),1)
-	TweenOut.tween_property(get_tree().get_first_node_in_group("player").get_node("Camera2D"),"position",Vector2(0,0),1)
+	if(AtNewPos):
+		get_tree().get_first_node_in_group("player").get_node("Camera2D").position = Vector2(0,0)
+	else:
+		TweenOut.tween_property(get_tree().get_first_node_in_group("player").get_node("Camera2D"),"position",Vector2(0,0),1)
 	#$Camera2D.enabled = false
 	#$Camera2D.zoom = Vector2(3,3)
