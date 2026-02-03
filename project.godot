@@ -77,6 +77,7 @@ window/size/viewport_height=1080
 window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
+window/vsync/vsync_mode=0
 
 [dotnet]
 
@@ -91,6 +92,7 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 enemy=""
 player=""
 ventopening=""
+ventroom=""
 
 [input]
 

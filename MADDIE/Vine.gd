@@ -8,6 +8,8 @@ extends Line2D
 
 var CurrentLength : float = 0
 
+var DefRotation : float
+
 var CurrentInterval : int = 0:
 	get:
 		return CurrentInterval
@@ -94,6 +96,8 @@ func OnIntervalChanged(OldInterval, NewInterval):
 		if(points.size()!=0):
 			add_point(get_point_position(points.size()-1)+(Vector2.UP * LengthInterval).rotated(deg_to_rad(CurrentRotationDegrees)))
 		else:
+			if(DefRotation):
+				CurrentRotationDegrees = DefRotation
 			add_point(Vector2.ZERO+(Vector2.UP * LengthInterval).rotated(deg_to_rad(CurrentRotationDegrees)))
 		RotationAtIntervals.append(RotationDirection)
 	elif(OldInterval > NewInterval):

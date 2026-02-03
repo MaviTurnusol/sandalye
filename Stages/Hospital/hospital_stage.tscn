@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cnuddgfp0s51y"]
+[gd_scene load_steps=19 format=4 uid="uid://cnuddgfp0s51y"]
 
 [ext_resource type="Texture2D" uid="uid://gfby42mbf1a" path="res://Stages/Hospital/koridor5w1.png" id="1_53p24"]
 [ext_resource type="Texture2D" uid="uid://b8cvicemqj5ek" path="res://Stages/Hospital/koridor5w1_n.png" id="2_ccdf0"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://Stages/Hospital/vignette.gd" id="6_gujpw"]
 [ext_resource type="Shader" path="res://Stages/Hospital/vignette.gdshader" id="6_li2jn"]
 [ext_resource type="PackedScene" uid="uid://dlic7mcwubbkw" path="res://MADDIE/VentryPoint.tscn" id="9_rkbuc"]
+[ext_resource type="Script" path="res://MADDIE/VentRoom.gd" id="10_84p7b"]
+[ext_resource type="Texture2D" uid="uid://bebtsmnkxqmh1" path="res://MADDIE/Vent.png" id="10_x3jb0"]
 [ext_resource type="Script" path="res://Common/room.gd" id="12_5e71n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ej86n"]
@@ -44,6 +46,16 @@ specular_shininess = 0.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryvmy"]
 size = Vector2(2353, 20)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q1au7"]
+texture = ExtResource("10_x3jb0")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_w2kts"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_q1au7")
 
 [node name="HospitalStage" type="Node2D"]
 
@@ -117,12 +129,42 @@ position = Vector2(-296, 147)
 position = Vector2(287, 145)
 
 [node name="VentryPoint2" parent="KoridorRoom" instance=ExtResource("9_rkbuc")]
+position = Vector2(240, 288)
 
 [node name="VentryPoint3" parent="KoridorRoom" instance=ExtResource("9_rkbuc")]
-position = Vector2(386, 290)
+position = Vector2(367, 288)
 
 [node name="VentryPoint4" parent="KoridorRoom" instance=ExtResource("9_rkbuc")]
 position = Vector2(303, 119)
+InitialRotation = 180.0
 
 [node name="VentryPoint5" parent="KoridorRoom" instance=ExtResource("9_rkbuc")]
-position = Vector2(-111, 290)
+position = Vector2(-111, 288)
+
+[node name="VentRoom" type="Node2D" parent="." groups=["ventroom"]]
+script = ExtResource("10_84p7b")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="VentRoom"]
+self_modulate = Color(0.23401, 0.0683856, 0.102775, 1)
+z_index = 5
+tile_map_data = PackedByteArray("AAD8/wgAAAAAAAAAAAD8/wcAAAAAAAAAAAD8/wYAAAAAAAAAAAD8/wUAAAAAAAAAAAD9/wUAAAAAAAAAAAD+/wUAAAAAAAAAAAD//wUAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAMAAAAAAAAAAAAKAAUAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAALAAgAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_w2kts")
+
+[node name="Control" type="Control" parent="VentRoom"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="VentRoom/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="VentRoom"]
